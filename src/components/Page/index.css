@@ -1,4 +1,6 @@
 .pageWrapper {
+  position: relative;
+  margin-bottom: 10mm;
 	box-shadow: 0 10px 10px #ccc;
 	background: #fff;
 }

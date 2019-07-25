@@ -1,0 +1,24 @@
+
+
+.blockItem {
+  position: absolute;
+  display: inline-block;
+  width: 5mm;
+  height: 5mm;
+  background: #000;
+}
+
+.leftTop {
+  top: 5mm;
+  left: 5mm;
+}
+
+.rightTop {
+  top: 5mm;
+  right: 5mm;
+}
+
+.leftBottom {
+  left: 5mm;
+  bottom: 5mm;
+}
