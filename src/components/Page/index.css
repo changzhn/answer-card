@@ -4,3 +4,23 @@
 	box-shadow: 0 10px 10px #ccc;
 	background: #fff;
 }
+
+.contentWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 190mm;
+  height: 277mm;
+  background: #ccc;
+}
+
+.pageNum {
+  position: absolute;
+  bottom: 2.5mm;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}

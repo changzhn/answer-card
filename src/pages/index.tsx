@@ -11,7 +11,12 @@ export default function() {
         {
           // tslint:disable-next-line:jsx-no-multiline-js
           mockPages.map((page, idx) => (
-            <Page key={idx} components={page} currentPage={idx+1} />
+            <Page
+              key={idx}
+              components={page}
+              currentPage={idx+1}
+              totalPage={mockPages.length}
+            />
           ))
         }
       </div>
