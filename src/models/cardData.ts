@@ -1,12 +1,15 @@
 
 const anwerQuestion = {
+  questionId: 123,
   questionNo: 1,
+  questionType: 3,
   height: 80,
 };
 
 const cardData = {
   questions: [
     {
+      questionId: 222,
       questionNo: 1,
       questionTitle: '解答题',
       questionType: 3,

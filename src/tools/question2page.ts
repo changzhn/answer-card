@@ -5,6 +5,7 @@ import ColumnNum from '@/constants/ColumnNum';
 import { ICardData } from '@/models/cardData';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import PageClass from './QuestionClasses/PageClass';
+import TitleClass from './QuestionClasses/TitleClass';
 
 /**
  * 将题型数据分配到页面中
@@ -28,12 +29,13 @@ function question2page(cardData: ICardData, paperType: PaperType) {
    * @param computedQuestion 要计算的题
    */
   function walk(computedQuestion) {
-    const currentPage = computeHeight(page, computedQuestion);
-    pages.push(currentPage);
+    page = computeHeight(page, computedQuestion);
   }
+  pages.push(page);
 
   questions.forEach(bigQuestion => {
     const { questionType } = bigQuestion;
+    walk(new TitleClass(bigQuestion));
     switch(questionType) {
       case QuestionType.AnswerQuestion:
         bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
@@ -49,6 +51,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
 function computeHeight(currentPage: PageClass, computedQuestion) {
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
     currentPage.components.push(computedQuestion);
+    currentPage.availableHeight -= computedQuestion.requiredHeight;
   }
 
   return currentPage;

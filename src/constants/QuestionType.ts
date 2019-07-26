@@ -1,6 +1,7 @@
 
 enum QuestionType {
-  Choices = 1,
+  Title,
+  Choices,
   FillBlank,
   AnswerQuestion,
 };

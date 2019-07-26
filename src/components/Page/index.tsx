@@ -5,6 +5,7 @@ import PaperType from '@/constants/PaperType';
 import Size, { ISizeItem } from '@/constants/Size';
 import LocatingBlocks from '@/components/LocatingBlocks';
 import PageClass from '@/tools/QuestionClasses/PageClass';
+import getComponent from './getComponent';
 
 interface IProps {
   global: IGlobalState;
@@ -17,15 +18,17 @@ export default class Page extends React.Component<IProps> {
   }
 
 	public render() {
-    const { global, totalPage, page: { pageNo } } = this.props;
+    const { global, totalPage, page } = this.props;
+    const { pageNo } = page;
     const { paperType } = global;
     const { actualWidth, actualHeight } = this.getAcutalWidthAndHeight(paperType);
-
 		return (
 			<div className={styles.pageWrapper} style={{width: `${actualWidth}mm`, height: `${actualHeight}mm`}}>
         <div className={styles.contentWrapper}>
-
-          content
+          {
+            // tslint:disable-next-line:jsx-no-multiline-js
+            page.components.map(component => getComponent(component))
+          }
         </div>
         <LocatingBlocks global={global} currentPage={pageNo} />
         <div className={styles.pageNum}>第{pageNo}页 共{totalPage}页</div>
