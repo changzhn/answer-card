@@ -1,28 +1,23 @@
 import * as React from 'react';
 import styles from './index.css';
-import { connect } from 'dva';
 import { IGlobalState } from '@/models/global';
 import PaperType from '@/constants/PaperType';
 import Size, { ISizeItem } from '@/constants/Size';
 import LocatingBlocks from '@/components/LocatingBlocks';
+import PageClass from '@/tools/QuestionClasses/PageClass';
 
 interface IProps {
   global: IGlobalState;
-  components: Array<any>;
-  currentPage: number;
+  page: PageClass;
   totalPage: number;
 }
-
-@connect(({ global }) => ({
-  global,
-}))
 export default class Page extends React.Component<IProps> {
   public getAcutalWidthAndHeight(paperType: PaperType): ISizeItem {
     return Size[paperType];
   }
 
 	public render() {
-    const { global, currentPage, totalPage } = this.props;
+    const { global, totalPage, page: { pageNo } } = this.props;
     const { paperType } = global;
     const { actualWidth, actualHeight } = this.getAcutalWidthAndHeight(paperType);
 
@@ -32,8 +27,8 @@ export default class Page extends React.Component<IProps> {
 
           content
         </div>
-        <LocatingBlocks global={global} currentPage={currentPage} />
-        <div className={styles.pageNum}>第{currentPage}页 共{totalPage}页</div>
+        <LocatingBlocks global={global} currentPage={pageNo} />
+        <div className={styles.pageNum}>第{pageNo}页 共{totalPage}页</div>
 			</div>
 		)
 	}
