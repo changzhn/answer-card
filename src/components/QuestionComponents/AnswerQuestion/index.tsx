@@ -7,7 +7,7 @@ interface IPoprs {
   component: AnswerQuestion;
 }
 
-export default class Title extends React.Component<IPoprs> {
+export default class AnswerQuestion extends React.Component<IPoprs> {
   public render() {
     const { component } = this.props;
     const { requiredHeight } = component;
