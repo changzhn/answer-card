@@ -3,7 +3,7 @@ const anwerQuestion = {
   questionId: 123,
   questionNo: 1,
   questionType: 3,
-  height: 800,
+  height: 240,
 };
 
 const bigAnswerQuestion = {

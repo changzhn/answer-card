@@ -63,7 +63,7 @@ function computeHeight(currentPage: PageClass, computedQuestion: Union) {
     const res = computedQuestion.splitSelf(currentPage)
     currentPage = res.currentPage;
     currentPage.availableHeight = 0;
-    nextQuestion = res.nextQuestion; // TODO:更新可用空间
+    nextQuestion = res.nextQuestion;
   }
 
   return {currentPage, nextQuestion};

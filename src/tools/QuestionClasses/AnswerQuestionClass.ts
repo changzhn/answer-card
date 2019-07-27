@@ -20,8 +20,12 @@ export default class AnswerQuestionClass {
   public splitSelf(currentPage: PageClass) {
     const delta = this.requiredHeight - currentPage.availableHeight;
     this.requiredHeight = currentPage.availableHeight;
-    const nextQuestion = new AnswerQuestionClass(this.question, delta);
-    nextQuestion.partNo = this.partNo + 1;
+    let nextQuestion = null;
+
+    if (delta >= 10) { // 下页不足10mm时，省略掉
+      nextQuestion = new AnswerQuestionClass(this.question, delta);
+      nextQuestion.partNo = this.partNo + 1;
+    }
     currentPage.components.push(this);
     return {
       currentPage,
