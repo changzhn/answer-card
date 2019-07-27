@@ -10,14 +10,14 @@ interface IPoprs {
 export default class AnswerQuestion extends React.Component<IPoprs> {
   public render() {
     const { component } = this.props;
-    const { requiredHeight } = component;
+    const { requiredHeight, question } = component;
     const height = Utils.addUnit(requiredHeight);
     return (
       <div
         className={styles.questionWrapper}
         style={{height}}
       >
-        answer question
+        {question.questionNo}.
       </div>
     )
   }
