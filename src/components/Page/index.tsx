@@ -1,11 +1,10 @@
 import * as React from 'react';
 import styles from './index.css';
 import { IGlobalState } from '@/models/global';
-import PaperType from '@/constants/PaperType';
-import Size, { ISizeItem } from '@/constants/Size';
 import LocatingBlocks from '@/components/LocatingBlocks';
 import PageClass from '@/tools/QuestionClasses/PageClass';
 import getComponent from './getComponent';
+import CardInfo from '@/components/CardInfo';
 
 interface IProps {
   global: IGlobalState;
@@ -13,18 +12,14 @@ interface IProps {
   totalPage: number;
 }
 export default class Page extends React.Component<IProps> {
-  public getAcutalWidthAndHeight(paperType: PaperType): ISizeItem {
-    return Size[paperType];
-  }
-
 	public render() {
     const { global, totalPage, page } = this.props;
-    const { pageNo } = page;
-    const { paperType } = global;
-    const { actualWidth, actualHeight } = this.getAcutalWidthAndHeight(paperType);
+    const { pageNo, size } = page;
+    const { actualWidth, actualHeight } = size;
 		return (
 			<div className={styles.pageWrapper} style={{width: `${actualWidth}mm`, height: `${actualHeight}mm`}}>
         <div className={styles.contentWrapper}>
+          {pageNo === 1 ? <CardInfo /> : null}
           {
             page.components.map(component => getComponent(component))
           }

@@ -16,7 +16,7 @@ type Union = TitleClass | AnswerQuestionClass;
  */
 function question2page(cardData: ICardData, paperType: PaperType) {
   let pages = [];
-  let page = new PageClass(277, 1);
+  let page = new PageClass(paperType, 1);
   const { questions } = cardData;
 
   if (!Array.isArray(questions)) {
@@ -31,7 +31,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
     let { currentPage, nextQuestion } = computeHeight(page, computedQuestion);
     if (nextQuestion) {
       pages.push(currentPage);
-      page = new PageClass(currentPage.contentHeight, currentPage.pageNo + 1);
+      page = new PageClass(currentPage.paperType, currentPage.pageNo + 1);
       walk(nextQuestion);
     } else {
       page = currentPage;
