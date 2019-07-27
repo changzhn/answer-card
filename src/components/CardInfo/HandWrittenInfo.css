@@ -1,0 +1,24 @@
+.wrapper {
+  height: 10mm;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 33.3%;
+}
+
+.left {
+  width: 80px;
+  text-align: center;
+}
+
+.right {
+  flex: 1;
+  border-bottom: 1px solid #000;
+}

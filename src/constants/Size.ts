@@ -18,7 +18,7 @@ const Size: ISize = {
 		actualHeight: 297,
 		contentWidth: 190,
     contentHeight: 277,
-    cardInfoHeight: 100,
+    cardInfoHeight: 25,
 	}
 }
 

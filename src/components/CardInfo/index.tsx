@@ -5,6 +5,7 @@ import CardTitle from './CardTitle';
 import { ICardData } from '@/models/cardData';
 import RegistrationNo from './RegistrationNo';
 import Attention from './Attention';
+import HandWrittenInfo from './HandWrittenInfo';
 
 interface IProps {
   size: ISizeItem;
@@ -17,8 +18,9 @@ export default class PaperInfo extends React.Component<IProps> {
     return (
       <div style={{height: Utils.addUnit(size.cardInfoHeight)}}>
         <CardTitle title={cardData.cardTitle} />
-        <RegistrationNo />
-        <Attention />
+        <HandWrittenInfo />
+        {/* <RegistrationNo /> */}
+        {/* <Attention /> */}
       </div>
     )
   }
