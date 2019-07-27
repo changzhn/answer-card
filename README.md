@@ -18,7 +18,7 @@ yarn run build
 3. 支持选择题，包括分组、自定义选项功能；
 4. 支持填空题，包括自定义高度、自定义多行一题功能；
 5. 支持解答题，包括自定义高度、插入富文本功能；
-6. 支持中文方格作文题；
+6. ~~支持中文方格作文题~~；
 7. 支持英文横线作文题；
 
 ## 设计标准
@@ -35,5 +35,60 @@ A4        |210mm       |297mm        |190mm        |277mm
 - 所有尺寸的标注为4个值：x、y、w、h分别代表了距原点的偏移值和自身的宽高；
 
 ### 标题
+![img](./public/title.png)
 - 标题的高度一致为8mm并且不换行（理论上大题说明一行搞定）；
 - 标题涉及到分页时，一律放到下页；
+[代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/TitleClass.ts#L18)
+```typescript
+public splitSelf(currentPage: PageClass) {
+  const nextQuestion = this;
+  return {
+    currentPage,
+    nextQuestion,
+  }
+}
+```
+
+### 解答题
+![img](./public/answerQuestion.png)
+- 宽度为纸型栏位的宽度，高度可以设置和自由调整；
+- 涉及分页时，依次递减上页可以高度；
+[代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/AnswerQuestionClass.ts#L21)
+```typescript
+public splitSelf(currentPage: PageClass) {
+  const delta = this.requiredHeight - currentPage.availableHeight;
+  this.requiredHeight = currentPage.availableHeight;
+  let nextQuestion = null;
+
+  if (delta >= 10) { // 下页不足10mm时，省略掉
+    nextQuestion = new AnswerQuestionClass(this.question, delta);
+    nextQuestion.partNo = this.partNo + 1;
+  }
+  currentPage.components.push(this);
+  return {
+    currentPage,
+    nextQuestion,
+  }
+}
+```
+
+### 中文作文题
+![img](./public/essay.png)
+- 中文方格标准为8mmx8mm，两行之间间隔为2.5mm，最后一行不带间隔；
+- 每逢整百有标记；
+- 分页时剩余格子数 = 总格子数 - 上页容纳格子数；
+[代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/EssayQuestionClass.ts#L37)
+```typescript
+public splitSelf(currentPage: PageClass) {
+  this.rows = Math.floor((currentPage.availableHeight - 10) / (8 + 2.5));
+  const restLength = this.restLength - this.rows * this.lenPerRow;
+  const nextQuestion = new EssayQuestionClass(this.question, this.paperType, restLength);
+  nextQuestion.partNo = this.partNo + 1;
+  nextQuestion.prevRows = this.prevRows + this.rows;
+  currentPage.components.push(this);
+  return {
+    currentPage,
+    nextQuestion,
+  }
+}
+```
