@@ -45,6 +45,7 @@ class AnswerCardMain extends React.Component<IProps, IState> {
           {
             pages.map(page => (
               <Page
+                cardData={cardData}
                 key={page.pageNo}
                 global={global}
                 page={page}

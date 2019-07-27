@@ -17,6 +17,8 @@ const bigAnswerQuestion = {
 }
 
 const cardData = {
+  cardId: 10010,
+  cardTitle: '测试答题卡',
   questions: [
     bigAnswerQuestion,
   ]
