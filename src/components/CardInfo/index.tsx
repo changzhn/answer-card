@@ -4,6 +4,7 @@ import Utils from '@/utils/Utils';
 import CardTitle from './CardTitle';
 import { ICardData } from '@/models/cardData';
 import RegistrationNo from './RegistrationNo';
+import Attention from './Attention';
 
 interface IProps {
   size: ISizeItem;
@@ -17,6 +18,7 @@ export default class PaperInfo extends React.Component<IProps> {
       <div style={{height: Utils.addUnit(size.cardInfoHeight)}}>
         <CardTitle title={cardData.cardTitle} />
         <RegistrationNo />
+        <Attention />
       </div>
     )
   }
