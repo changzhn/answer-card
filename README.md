@@ -39,6 +39,7 @@ A4        |210mm       |297mm        |190mm        |277mm
 - 标题的高度一致为8mm并且不换行（理论上大题说明一行搞定）；
 - 标题涉及到分页时，一律放到下页；
 <br />
+
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/TitleClass.ts#L18)
 
 ```typescript
@@ -56,6 +57,7 @@ public splitSelf(currentPage: PageClass) {
 - 宽度为纸型栏位的宽度，高度可以设置和自由调整；
 - 涉及分页时，依次递减上页可以高度；
 <br />
+
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/AnswerQuestionClass.ts#L21)
 
 ```typescript
@@ -82,6 +84,7 @@ public splitSelf(currentPage: PageClass) {
 - 每逢整百有标记；
 - 分页时剩余格子数 = 总格子数 - 上页容纳格子数；
 <br />
+
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/EssayQuestionClass.ts#L37)
 
 ```typescript
