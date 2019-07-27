@@ -1,7 +1,8 @@
 import { IAnswerQuestion } from '@/models/cardData'
 import PageClass from './PageClass';
+import BaseClass from './BaseClass';
 
-export default class AnswerQuestionClass {
+export default class AnswerQuestionClass implements BaseClass {
   question: IAnswerQuestion;
   requiredHeight: number;
   partNo: number;

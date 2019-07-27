@@ -1,7 +1,6 @@
-import TitleClass from './TitleClass';
-import AnswerQuestionClass from './AnswerQuestionClass';
 import PaperType from '@/constants/PaperType';
 import Size, { ISizeItem } from '@/constants/Size';
+import { Union } from '@/tools/question2page';
 
 export default class PageClass {
   contentHeight: number;
@@ -9,7 +8,7 @@ export default class PageClass {
   pageNo: number;
   size: ISizeItem;
   paperType: PaperType;
-  components: Array<TitleClass | AnswerQuestionClass>;
+  components: Array<Union>;
 
   constructor(paperType: PaperType, pageNo: number) {
     this.pageNo = pageNo;

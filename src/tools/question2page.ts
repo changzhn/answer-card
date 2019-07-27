@@ -6,8 +6,9 @@ import { ICardData } from '@/models/cardData';
 import PageClass from './QuestionClasses/PageClass';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
+import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
 
-type Union = TitleClass | AnswerQuestionClass;
+export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass;
 
 /**
  * 将题型数据分配到页面中
@@ -44,6 +45,9 @@ function question2page(cardData: ICardData, paperType: PaperType) {
     switch(questionType) {
       case QuestionType.AnswerQuestion:
         bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
+        break;
+      case QuestionType.EssayQuestion:
+        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion)));
         break;
       default:
 

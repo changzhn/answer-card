@@ -5,16 +5,35 @@ const anwerQuestion = {
   questionId: 123,
   questionNo: 1,
   questionType: 3,
-  height: 240,
+  height: 40,
+  length: 800,
+};
+
+const essayQuestion = {
+  questionId: 223,
+  questionNo: 1,
+  questionType: 4,
+  length: 800,
+  height: 40,
 };
 
 const bigAnswerQuestion = {
-  questionId: 222,
+  questionId: 111,
   questionNo: 1,
   questionTitle: '解答题',
   questionType: 3,
   questions: [
     anwerQuestion,
+  ]
+}
+
+const bigEssayQuestion = {
+  questionId: 222,
+  questionNo: 2,
+  questionTitle: '作文题',
+  questionType: 4,
+  questions: [
+    essayQuestion,
   ]
 }
 
@@ -25,11 +44,12 @@ const cardData = {
   columnNum: ColumnNum.one,
   questions: [
     bigAnswerQuestion,
+    bigEssayQuestion,
   ]
 };
 
 export type IAnswerQuestion = typeof anwerQuestion;
-export type IBigQuestion = typeof bigAnswerQuestion;
+export type IBigQuestion = typeof bigAnswerQuestion | typeof bigEssayQuestion;
 export type ICardData = typeof cardData;
 
 const initState: ICardData = cardData;

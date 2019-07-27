@@ -4,6 +4,7 @@ enum QuestionType {
   Choices,
   FillBlank,
   AnswerQuestion,
+  EssayQuestion,
 };
 
 export default QuestionType;

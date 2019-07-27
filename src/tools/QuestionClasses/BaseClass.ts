@@ -4,7 +4,7 @@ import AnswerQuestionClass from './AnswerQuestionClass';
 
 interface IReturnValue {
   currentPage: PageClass;
-  nextQuestion: TitleClass | AnswerQuestionClass; // TODO:
+  nextQuestion: TitleClass | AnswerQuestionClass | null; // TODO:
 }
 
 export default abstract class BaseClass {

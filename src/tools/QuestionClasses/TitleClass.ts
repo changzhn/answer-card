@@ -3,12 +3,11 @@ import { IBigQuestion } from '@/models/cardData';
 import BaseClass from './BaseClass';
 import PageClass from './PageClass';
 
-export default class TitleClass extends BaseClass {
+export default class TitleClass implements BaseClass {
   requiredHeight: number;
   question: IBigQuestion;
 
   constructor(question: IBigQuestion) {
-    super();
     this.question = {
       ...question,
       questionType: QuestionType.Title,
