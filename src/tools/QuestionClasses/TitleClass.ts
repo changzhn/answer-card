@@ -17,11 +17,10 @@ export default class TitleClass extends BaseClass {
   }
 
   public splitSelf(currentPage: PageClass) {
-    const nextPage = new PageClass(currentPage.contentHeight, currentPage.pageNo + 1);
-    nextPage.components.push(this);
+    const nextQuestion = this;
     return {
       currentPage,
-      nextPage,
+      nextQuestion,
     }
   }
 }

@@ -28,10 +28,11 @@ function question2page(cardData: ICardData, paperType: PaperType) {
    * @param computedQuestion 要计算的题
    */
   function walk(computedQuestion: Union) {
-    let { currentPage, nextPage } = computeHeight(page, computedQuestion);
-    if (nextPage) {
+    let { currentPage, nextQuestion } = computeHeight(page, computedQuestion);
+    if (nextQuestion) {
       pages.push(currentPage);
-      page = nextPage;
+      page = new PageClass(currentPage.contentHeight, currentPage.pageNo + 1);
+      walk(nextQuestion);
     } else {
       page = currentPage;
     }
@@ -54,17 +55,18 @@ function question2page(cardData: ICardData, paperType: PaperType) {
 }
 
 function computeHeight(currentPage: PageClass, computedQuestion: Union) {
-  let nextPage = null;
+  let nextQuestion = null;
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
     currentPage.components.push(computedQuestion);
     currentPage.availableHeight -= computedQuestion.requiredHeight;
   } else { // 需要分页处理
     const res = computedQuestion.splitSelf(currentPage)
     currentPage = res.currentPage;
-    nextPage = res.nextPage;
+    currentPage.availableHeight = 0;
+    nextQuestion = res.nextQuestion; // TODO:更新可用空间
   }
 
-  return {currentPage, nextPage};
+  return {currentPage, nextQuestion};
 }
 
 export default question2page;

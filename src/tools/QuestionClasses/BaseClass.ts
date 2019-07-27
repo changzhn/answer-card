@@ -2,7 +2,7 @@ import PageClass from './PageClass';
 
 interface IReturnValue {
   currentPage: PageClass;
-  nextPage: PageClass;
+  nextQuestion: any; // TODO:
 }
 
 export default abstract class BaseClass {

@@ -18,15 +18,13 @@ export default class AnswerQuestionClass {
   }
 
   public splitSelf(currentPage: PageClass) {
-    const nextPage = new PageClass(currentPage.contentHeight, currentPage.pageNo + 1);
     const delta = this.requiredHeight - currentPage.availableHeight;
     this.requiredHeight = currentPage.availableHeight;
-    const nextPageAnswerQuestion = new AnswerQuestionClass(this.question, delta);
+    const nextQuestion = new AnswerQuestionClass(this.question, delta);
     currentPage.components.push(this);
-    nextPage.components.push(nextPageAnswerQuestion);
     return {
       currentPage,
-      nextPage,
+      nextQuestion,
     }
   }
 };
