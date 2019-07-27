@@ -1,0 +1,60 @@
+.wrapper {
+  width: 49.6mm;
+  height: 52mm;
+  font-size: 3mm;
+  display: inline-block;
+  border: 1px solid #000;
+  color: #000;
+}
+
+.title {
+  width: 49.6mm;
+  height: 6mm;
+  line-height: 6mm;
+  text-align: center;
+}
+
+.square {
+  width: 49.6mm;
+  height: 6mm;
+  line-height: 6mm;
+  border-top: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+}
+
+.squareItem {
+  flex: 1 1 0%;
+  width: 6.2mm;
+  height: 6mm;
+  border-right: 1px solid rgb(0, 0, 0);
+  float: left;
+  box-sizing: border-box;
+  margin-left: -1px;
+}
+
+.squareItem:last-child {
+  border-right: none;
+}
+
+.handWritten {
+  width: 49.6mm;
+  height: 40mm;
+  line-height: 4mm;
+  border-top: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+}
+
+.handWrittenItem {
+  flex: 1 1 0%;
+  width: 6.2mm;
+  border-right: 1px solid rgb(0, 0, 0);
+  float: left;
+  box-sizing: border-box;
+  margin-left: -1px;
+}
+
+.handWrittenItem:last-child {
+  border-right: none;
+}

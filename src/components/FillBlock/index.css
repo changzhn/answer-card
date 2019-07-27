@@ -1,0 +1,20 @@
+.fillBlock {
+  display: inline-block;
+  width: 3.5mm;
+  height: 2mm;
+  line-height: 2mm;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+.letter {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.6);
+  font-size: 2mm;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  position: relative;
+  font-family: "Times New Roman";
+}
