@@ -21,6 +21,7 @@ export default class AnswerQuestionClass {
     const delta = this.requiredHeight - currentPage.availableHeight;
     this.requiredHeight = currentPage.availableHeight;
     const nextQuestion = new AnswerQuestionClass(this.question, delta);
+    nextQuestion.partNo = this.partNo + 1;
     currentPage.components.push(this);
     return {
       currentPage,
