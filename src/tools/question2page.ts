@@ -3,9 +3,11 @@ import QuestionType from '@/constants/QuestionType';
 import Size from '@/constants/Size';
 import ColumnNum from '@/constants/ColumnNum';
 import { ICardData } from '@/models/cardData';
-import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import PageClass from './QuestionClasses/PageClass';
+import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
+
+type Union = TitleClass | AnswerQuestionClass;
 
 /**
  * 将题型数据分配到页面中
@@ -25,10 +27,15 @@ function question2page(cardData: ICardData, paperType: PaperType) {
    * 闭包函数，将题插入到页面
    * @param computedQuestion 要计算的题
    */
-  function walk(computedQuestion: TitleClass | AnswerQuestionClass) {
-    page = computeHeight(page, computedQuestion);
+  function walk(computedQuestion: Union) {
+    let { currentPage, nextPage } = computeHeight(page, computedQuestion);
+    if (nextPage) {
+      pages.push(currentPage);
+      page = nextPage;
+    } else {
+      page = currentPage;
+    }
   }
-  pages.push(page);
 
   questions.forEach(bigQuestion => {
     const { questionType } = bigQuestion;
@@ -42,16 +49,22 @@ function question2page(cardData: ICardData, paperType: PaperType) {
     }
   });
 
+  pages.push(page);
   return pages;
 }
 
-function computeHeight(currentPage: PageClass, computedQuestion: any) {// TODO:
+function computeHeight(currentPage: PageClass, computedQuestion: Union) {
+  let nextPage = null;
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
     currentPage.components.push(computedQuestion);
     currentPage.availableHeight -= computedQuestion.requiredHeight;
+  } else { // 需要分页处理
+    const res = computedQuestion.splitSelf(currentPage)
+    currentPage = res.currentPage;
+    nextPage = res.nextPage;
   }
 
-  return currentPage;
+  return {currentPage, nextPage};
 }
 
 export default question2page;

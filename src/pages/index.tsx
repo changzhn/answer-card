@@ -38,6 +38,7 @@ class AnswerCardMain extends React.Component<IProps, IState> {
   public render() {
     const { global, cardData } = this.props;
     const pages: PageClass[] = this.state.pages;
+    console.log(pages)
     return (
       <div className={styles.appWrapper}>
         <div className={styles.pagesWrapper}>
