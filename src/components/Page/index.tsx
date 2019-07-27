@@ -19,7 +19,7 @@ export default class Page extends React.Component<IProps> {
 		return (
 			<div className={styles.pageWrapper} style={{width: `${actualWidth}mm`, height: `${actualHeight}mm`}}>
         <div className={styles.contentWrapper}>
-          {pageNo === 1 ? <CardInfo /> : null}
+          {pageNo === 1 ? <CardInfo size={size}/> : null}
           {
             page.components.map(component => getComponent(component))
           }
