@@ -12,12 +12,14 @@ export default class EssayQuestionClass implements BaseClass {
   lenPerRow: number;
   rows: number;
   restLength: number;
+  prevRows: number;
 
   public constructor(question: IAnswerQuestion, paperType: PaperType, restLength?: number) {
     this.question = question;
     this.paperType = paperType;
     this.partNo = 0;
     // 计算该解答题需要的空间
+    this.prevRows = 0;
     this.restLength = restLength || this.question.length;
     this.lenPerRow = 1;
     this.rows = 1;
@@ -37,6 +39,7 @@ export default class EssayQuestionClass implements BaseClass {
     const restLength = this.restLength - this.rows * this.lenPerRow;
     const nextQuestion = new EssayQuestionClass(this.question, this.paperType, restLength);
     nextQuestion.partNo = this.partNo + 1;
+    nextQuestion.prevRows = this.prevRows + this.rows;
     currentPage.components.push(this);
     return {
       currentPage,

@@ -13,7 +13,7 @@ const essayQuestion = {
   questionId: 223,
   questionNo: 1,
   questionType: 4,
-  length: 800,
+  length: 2000,
   height: 40,
 };
 
