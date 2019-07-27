@@ -42,7 +42,6 @@ class AnswerCardMain extends React.Component<IProps, IState> {
       <div className={styles.appWrapper}>
         <div className={styles.pagesWrapper}>
           {
-            // tslint:disable-next-line:jsx-no-multiline-js
             pages.map(page => (
               <Page
                 key={page.pageNo}

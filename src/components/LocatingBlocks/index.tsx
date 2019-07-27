@@ -22,7 +22,6 @@ const LocatingBlock: React.SFC<IProps> = (props) => {
   return (
     <React.Fragment>
       {
-        // tslint:disable-next-line:jsx-no-multiline-js
         items.map(item => (
           <BlockItem key={item} value={item}/>
         ))

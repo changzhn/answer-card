@@ -26,7 +26,6 @@ export default class Page extends React.Component<IProps> {
 			<div className={styles.pageWrapper} style={{width: `${actualWidth}mm`, height: `${actualHeight}mm`}}>
         <div className={styles.contentWrapper}>
           {
-            // tslint:disable-next-line:jsx-no-multiline-js
             page.components.map(component => getComponent(component))
           }
         </div>
