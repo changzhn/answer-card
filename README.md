@@ -40,6 +40,7 @@ A4        |210mm       |297mm        |190mm        |277mm
 - 标题涉及到分页时，一律放到下页；
 <br />
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/TitleClass.ts#L18)
+
 ```typescript
 public splitSelf(currentPage: PageClass) {
   const nextQuestion = this;
@@ -56,6 +57,7 @@ public splitSelf(currentPage: PageClass) {
 - 涉及分页时，依次递减上页可以高度；
 <br />
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/AnswerQuestionClass.ts#L21)
+
 ```typescript
 public splitSelf(currentPage: PageClass) {
   const delta = this.requiredHeight - currentPage.availableHeight;
@@ -81,6 +83,7 @@ public splitSelf(currentPage: PageClass) {
 - 分页时剩余格子数 = 总格子数 - 上页容纳格子数；
 <br />
 [代码路径](https://github.com/Joo-fanChang/answer-card/blob/0.0.1/src/tools/QuestionClasses/EssayQuestionClass.ts#L37)
+
 ```typescript
 public splitSelf(currentPage: PageClass) {
   this.rows = Math.floor((currentPage.availableHeight - 10) / (8 + 2.5));
