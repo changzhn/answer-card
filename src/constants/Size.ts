@@ -6,6 +6,7 @@ export interface ISizeItem {
   contentWidth: number;
   contentHeight: number;
   cardInfoHeight: number;
+  essayCount: number;
 }
 
 export interface ISize {
@@ -19,6 +20,7 @@ const Size: ISize = {
 		contentWidth: 190,
     contentHeight: 277,
     cardInfoHeight: 25,
+    essayCount: 22,
 	}
 }
 

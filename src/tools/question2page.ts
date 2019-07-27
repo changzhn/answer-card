@@ -47,7 +47,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
         bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
         break;
       case QuestionType.EssayQuestion:
-        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion)));
+        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
         break;
       default:
 
