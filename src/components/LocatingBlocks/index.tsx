@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { IGlobalState } from '@/models/global';
+import { ICardData } from '@/models/cardData';
 import BlockItem from './BlockItem';
 import PaperType from '@/constants/PaperType';
 
 interface IProps {
-  global: IGlobalState;
+  cardData: ICardData;
   currentPage: number;
 };
 
@@ -13,7 +13,7 @@ const rightTop = 'rightTop';
 const leftBottom = 'leftBottom';
 
 const LocatingBlock: React.SFC<IProps> = (props) => {
-  const { global: { paperType, columnNum } } = props;
+  const { cardData: { paperType, columnNum } } = props;
   let items = [leftTop, rightTop, leftBottom]; // A4
   if (paperType === PaperType.A3) {
     // TODO:

@@ -1,3 +1,5 @@
+import PaperType from '../constants/PaperType';
+import ColumnNum from '../constants/ColumnNum';
 
 const anwerQuestion = {
   questionId: 123,
@@ -19,6 +21,8 @@ const bigAnswerQuestion = {
 const cardData = {
   cardId: 10010,
   cardTitle: '测试答题卡',
+  paperType: PaperType.A4,
+  columnNum: ColumnNum.one,
   questions: [
     bigAnswerQuestion,
   ]

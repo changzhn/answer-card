@@ -2,14 +2,12 @@ import React from 'react';
 import styles from './index.css';
 import Page from '../components/Page';
 import { connect } from 'dva';
-import { IGlobalState } from '@/models/global';
 import { ICardData } from '@/models/cardData';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
 import IModelState from '@/types/IModelState';
 
 interface IProps {
-  global: IGlobalState;
   cardData: ICardData;
 }
 
@@ -20,8 +18,8 @@ interface IState {
 class AnswerCardMain extends React.Component<IProps, IState> {
 
   static getDerivedStateFromProps(nextProps: IProps) {
-    const { global, cardData } = nextProps;
-    const pages = question2page(cardData, global.paperType);
+    const { cardData } = nextProps;
+    const pages = question2page(cardData, cardData.paperType);
     return { pages };
   }
 
@@ -30,13 +28,13 @@ class AnswerCardMain extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    const { global, cardData } = this.props;
-    const pages = question2page(cardData, global.paperType);
+    const { cardData } = this.props;
+    const pages = question2page(cardData, cardData.paperType);
     this.setState({ pages });
   }
 
   public render() {
-    const { global, cardData } = this.props;
+    const { cardData } = this.props;
     const pages: PageClass[] = this.state.pages;
     console.log(pages)
     return (
@@ -47,7 +45,6 @@ class AnswerCardMain extends React.Component<IProps, IState> {
               <Page
                 cardData={cardData}
                 key={page.pageNo}
-                global={global}
                 page={page}
                 totalPage={pages.length}
               />
@@ -60,7 +57,6 @@ class AnswerCardMain extends React.Component<IProps, IState> {
 }
 
 export default connect((state: IModelState) => ({
-  global: state.global,
   cardData: state.cardData,
 }))(
   AnswerCardMain
