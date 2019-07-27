@@ -6,6 +6,7 @@ import { IGlobalState } from '@/models/global';
 import { ICardData } from '@/models/cardData';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
+import IModelState from '@/types/IModelState';
 
 interface IProps {
   global: IGlobalState;
@@ -13,16 +14,12 @@ interface IProps {
 }
 
 interface IState {
-  pages: Array<PageClass>;
+  pages: PageClass[];
 }
 
-@connect(({ global, cardData }) => ({
-  global,
-  cardData,
-}))
-export default class AnswerCardMain extends React.Component<IProps, IState> {
+class AnswerCardMain extends React.Component<IProps, IState> {
 
-  static getDerivedStateFromProps(nextProps, prevState) {
+  static getDerivedStateFromProps(nextProps: IProps) {
     const { global, cardData } = nextProps;
     const pages = question2page(cardData, global.paperType);
     return { pages };
@@ -40,7 +37,7 @@ export default class AnswerCardMain extends React.Component<IProps, IState> {
 
   public render() {
     const { global, cardData } = this.props;
-    const { pages } = this.state;
+    const pages: PageClass[] = this.state.pages;
     return (
       <div className={styles.appWrapper}>
         <div className={styles.pagesWrapper}>
@@ -60,3 +57,10 @@ export default class AnswerCardMain extends React.Component<IProps, IState> {
     )
   }
 }
+
+export default connect((state: IModelState) => ({
+  global: state.global,
+  cardData: state.cardData,
+}))(
+  AnswerCardMain
+)

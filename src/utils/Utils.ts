@@ -1,20 +1,17 @@
 export default class Utils {
-  static addUnit(num) {
+  static addUnit(num: number) {
     return `${num}mm`;
   }
 
-  static arabia2simplifiedChinese(Num) {
+  static arabia2simplifiedChinese(num: string) {
     let i;
-    for (i = Num.length - 1; i >= 0; i--) {
-      Num = Num.replace(",", "") //替换Num中的“,”
-      Num = Num.replace(" ", "") //替换Num中的空格
+    for (i = num.length - 1; i >= 0; i--) {
+      num = num.replace(",", "") //替换num中的“,”
+      num = num.replace(" ", "") //替换num中的空格
     }
-    if (isNaN(Num)) { //验证输入的字符是否为数字
-      //alert("请检查小写金额是否正确");
-      return;
-    }
+    
     //字符处理完毕后开始转换，采用前后两部分分别转换
-    let part = String(Num).split(".");
+    let part = String(num).split(".");
     let newchar = "";
     //小数点前进行转化
     for (i = part[0].length - 1; i >= 0; i--) {
@@ -61,25 +58,25 @@ export default class Utils {
           tmpnewchar = tmpnewchar;
           break;
         case 1:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "十";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "十";
           break;
         case 2:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "百";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "百";
           break;
         case 3:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "千";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "千";
           break;
         case 4:
           tmpnewchar = tmpnewchar + "万";
           break;
         case 5:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "十";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "十";
           break;
         case 6:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "百";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "百";
           break;
         case 7:
-          if (perchar != 0) tmpnewchar = tmpnewchar + "千";
+          if (perchar != '0') tmpnewchar = tmpnewchar + "千";
           break;
         case 8:
           tmpnewchar = tmpnewchar + "亿";

@@ -2,7 +2,7 @@ import * as React from 'react';
 import TitleClass from '@/tools/QuestionClasses/TitleClass';
 import Utils from '@/utils/Utils';
 
-interface IPoprs {
+interface IProps {
   component: TitleClass;
 }
 

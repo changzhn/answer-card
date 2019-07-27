@@ -1,10 +1,10 @@
 import * as React from 'react';
-import AnswerQuestion from '@/tools/QuestionClasses/AnswerQuestion';
+import AnswerQuestionClass from '@/tools/QuestionClasses/AnswerQuestionClass';
 import Utils from '@/utils/Utils';
 import styles from './index.css';
 
 interface IPoprs {
-  component: AnswerQuestion;
+  component: AnswerQuestionClass;
 }
 
 export default class AnswerQuestion extends React.Component<IPoprs> {

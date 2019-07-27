@@ -6,21 +6,24 @@ const anwerQuestion = {
   height: 80,
 };
 
+const bigAnswerQuestion = {
+  questionId: 222,
+  questionNo: 1,
+  questionTitle: '解答题',
+  questionType: 3,
+  questions: [
+    anwerQuestion,
+  ]
+}
+
 const cardData = {
   questions: [
-    {
-      questionId: 222,
-      questionNo: 1,
-      questionTitle: '解答题',
-      questionType: 3,
-      questions: [
-        anwerQuestion,
-      ]
-    }
+    bigAnswerQuestion,
   ]
 };
 
 export type IAnswerQuestion = typeof anwerQuestion;
+export type IBigQuestion = typeof bigAnswerQuestion;
 export type ICardData = typeof cardData;
 
 const initState: ICardData = cardData;

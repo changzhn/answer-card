@@ -1,6 +1,17 @@
 import PaperType from './PaperType';
 
-const Size = {
+export interface ISizeItem {
+  actualWidth: number;
+  actualHeight: number;
+  contentWidth: number;
+  contentHeight: number;
+}
+
+export interface ISize {
+  [key: string]: ISizeItem;
+}
+
+const Size: ISize = {
 	[PaperType.A4]: {
 		actualWidth: 210,
 		actualHeight: 297,
@@ -8,7 +19,5 @@ const Size = {
 		contentHeight: 277,
 	}
 }
-
-export type ISizeItem = typeof Size[PaperType.A4];
 
 export default Size;

@@ -14,10 +14,7 @@ import TitleClass from './QuestionClasses/TitleClass';
  */
 function question2page(cardData: ICardData, paperType: PaperType) {
   let pages = [];
-  let page = new PageClass({
-    contentHeight: 277,
-    pageNo: 1,
-   });
+  let page = new PageClass(277, 1);
   const { questions } = cardData;
 
   if (!Array.isArray(questions)) {
@@ -28,7 +25,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
    * 闭包函数，将题插入到页面
    * @param computedQuestion 要计算的题
    */
-  function walk(computedQuestion) {
+  function walk(computedQuestion: TitleClass | AnswerQuestionClass) {
     page = computeHeight(page, computedQuestion);
   }
   pages.push(page);
@@ -48,7 +45,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
   return pages;
 }
 
-function computeHeight(currentPage: PageClass, computedQuestion) {
+function computeHeight(currentPage: PageClass, computedQuestion: any) {// TODO:
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
     currentPage.components.push(computedQuestion);
     currentPage.availableHeight -= computedQuestion.requiredHeight;
