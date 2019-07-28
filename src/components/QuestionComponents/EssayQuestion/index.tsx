@@ -18,7 +18,7 @@ const EssayQuestion: React.SFC<IProps> = ({ component }) => {
             <React.Fragment key={rowIdx}>
               <div className={blockRowWrapper}>
                 {new Array(lenPerRow - 1).fill(0).map((span, colIndx) => {
-                  let rest = (prevRows + rowIdx + 1) * lenPerRow + colIndx + 1;
+                  let rest = (prevRows + rowIdx) * lenPerRow + colIndx + 1;
                   if (rest === 1099) {
                     // debugger
                   }
