@@ -19,9 +19,6 @@ const EssayQuestion: React.SFC<IProps> = ({ component }) => {
               <div className={blockRowWrapper}>
                 {new Array(lenPerRow - 1).fill(0).map((span, colIndx) => {
                   let rest = (prevRows + rowIdx) * lenPerRow + colIndx + 1;
-                  if (rest === 1099) {
-                    // debugger
-                  }
                   let num = 0;
                   let style = {};
                   if (rest % 100 === 0) {
