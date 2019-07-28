@@ -7,8 +7,9 @@ import PageClass from './QuestionClasses/PageClass';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
 import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
+import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
 
-export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass;
+export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
 
 /**
  * 将题型数据分配到页面中
@@ -49,8 +50,9 @@ function question2page(cardData: ICardData, paperType: PaperType) {
       case QuestionType.EssayQuestion:
         bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
         break;
+      case QuestionType.Choices:
+        walk(new ChoiceQuestionCLass(bigQuestion));
       default:
-
     }
   });
 

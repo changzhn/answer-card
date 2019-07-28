@@ -1,5 +1,6 @@
 .fillBlock {
   display: inline-block;
+  margin-right: 2mm;
   width: 3.5mm;
   height: 2mm;
   line-height: 2mm;
@@ -16,5 +17,4 @@
   text-align: center;
   color: rgb(0, 0, 0);
   position: relative;
-  font-family: "Times New Roman";
 }
