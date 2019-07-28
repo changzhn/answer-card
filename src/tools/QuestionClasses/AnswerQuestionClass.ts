@@ -11,11 +11,11 @@ export default class AnswerQuestionClass implements BaseClass {
     this.question = question;
     this.partNo = 0;
     // 计算该解答题需要的空间
-    this.requiredHeight = delta || this.getRequiredHeight(question);
+    this.requiredHeight = delta || this.getRequiredHeight();
   }
 
-  public getRequiredHeight(question: IAnswerQuestion) {
-    return question.height;
+  public getRequiredHeight() {
+    return this.question.height;
   }
 
   public splitSelf(currentPage: PageClass) {
