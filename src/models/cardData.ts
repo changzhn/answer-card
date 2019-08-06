@@ -58,7 +58,7 @@ const bigChoiceQuestion = {
 const cardData = {
   cardId: 10010,
   cardTitle: '测试答题卡',
-  paperType: PaperType.A4,
+  paperType: PaperType.A41,
   columnNum: ColumnNum.one,
   questions: [
     bigChoiceQuestion,

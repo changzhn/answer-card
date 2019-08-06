@@ -14,7 +14,7 @@ export interface ISize {
 }
 
 const Size: ISize = {
-	[PaperType.A4]: {
+	[PaperType.A41]: {
 		actualWidth: 210,
 		actualHeight: 297,
 		contentWidth: 190,

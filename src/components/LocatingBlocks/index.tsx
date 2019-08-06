@@ -15,7 +15,7 @@ const leftBottom = 'leftBottom';
 const LocatingBlock: React.SFC<IProps> = (props) => {
   const { cardData: { paperType, columnNum } } = props;
   let items = [leftTop, rightTop, leftBottom]; // A4
-  if (paperType === PaperType.A3) {
+  if (paperType === PaperType.A32) {
     // TODO:
   }
 
