@@ -11,8 +11,10 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "dva": "^2.6.0-beta.6",
+    "@types/lodash": "^4.14.136",
     "antd": "^3.19.5",
+    "dva": "^2.6.0-beta.6",
+    "lodash": "^4.17.15",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
@@ -37,11 +39,16 @@
     "umi": "^2.7.0",
     "umi-plugin-react": "^1.8.0",
     "umi-types": "^0.2.0"
-
-    },
+  },
   "lint-staged": {
-    "*.{ts,tsx}": ["tslint --fix", "git add"],
-    "*.{js,jsx}": ["eslint --fix", "git add"]
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"
