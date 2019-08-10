@@ -7,6 +7,7 @@ export interface ISizeItem {
   contentHeight: number;
   cardInfoHeight: number;
   essayCount: number;
+  choiceGroup: number;
 }
 
 export interface ISize {
@@ -21,6 +22,7 @@ const Size: ISize = {
     contentHeight: 277,
     cardInfoHeight: 25,
     essayCount: 22,
+    choiceGroup: 6,
 	}
 }
 

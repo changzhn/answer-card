@@ -6,7 +6,7 @@ const choiceQuestion = {
   questionNo: 1,
   questionType: 3,
   height: 40,
-  length: 800,
+  length: 4,
 }
 
 const anwerQuestion = {
@@ -50,9 +50,8 @@ const bigChoiceQuestion = {
   questionNo: 1,
   questionTitle: '选择题',
   questionType: 1,
-  questions: [
-    choiceQuestion,
-  ]
+  groupSize: 5, // 以几个小题为1组
+  questions: new Array(50).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random(), questionNo: idx + 1})),
 }
 
 const cardData = {
