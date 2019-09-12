@@ -13,7 +13,7 @@ const anwerQuestion = {
   questionId: 123,
   questionNo: 1,
   questionType: 3,
-  height: 40,
+  height: 400,
   length: 800,
 };
 
@@ -21,7 +21,7 @@ const essayQuestion = {
   questionId: 223,
   questionNo: 1,
   questionType: 4,
-  length: 200,
+  length: 800,
   height: 40,
 };
 

@@ -17,7 +17,7 @@ export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | Choi
  * @param paperType 纸型信息
  */
 function question2page(cardData: ICardData, paperType: PaperType) {
-  let pages = [];
+  let pages: PageClass[] = [];
   let page = new PageClass(paperType, 1);
   const { questions } = cardData;
 
