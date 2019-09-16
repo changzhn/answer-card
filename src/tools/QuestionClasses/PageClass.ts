@@ -1,4 +1,3 @@
-import ColumnNum from '@/constants/ColumnNum';
 import PaperType from '@/constants/PaperType';
 import Size, { ISizeItem } from '@/constants/Size';
 import { Union } from '@/tools/question2page';
@@ -10,11 +9,9 @@ export default class PageClass {
   size: ISizeItem;
   paperType: PaperType;
   components: Union[];
-  columnNum: ColumnNum;
 
-  constructor(paperType: PaperType, columnNum: ColumnNum, pageNo: number) {
+  constructor(paperType: PaperType, pageNo: number) {
     this.paperType = paperType;
-    this.columnNum = columnNum;
     this.pageNo = pageNo;
     this.size = this._getSize(this.paperType);
     this.contentHeight = this.size.contentHeight;

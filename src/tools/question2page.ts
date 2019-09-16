@@ -17,8 +17,8 @@ export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | Choi
  */
 function question2page(cardData: ICardType) {
   const pages: PageClass[] = [];
-  const { paperType, columnNum } = cardData;
-  let page = new PageClass(paperType, columnNum, 1);
+  const { paperType } = cardData;
+  let page = new PageClass(paperType, 1);
   const { questions } = cardData;
 
   if (!Array.isArray(questions)) {
@@ -33,7 +33,7 @@ function question2page(cardData: ICardType) {
     let { currentPage, nextQuestion } = computeHeight(page, computedQuestion);
     if (nextQuestion) {
       pages.push(currentPage);
-      page = new PageClass(paperType, columnNum, currentPage.pageNo + 1);
+      page = new PageClass(paperType, currentPage.pageNo + 1);
       walk(nextQuestion);
     } else {
       page = currentPage;
