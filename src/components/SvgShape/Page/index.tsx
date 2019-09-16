@@ -74,12 +74,7 @@ export default class SvgPage extends React.Component<IProps> {
           })
         }
 
-        <g
-          transform={`translate(${startX}, ${startY})`}
-        >
-          <rect x="0" y="0" width={`${contentWidth}`} height={`${contentHeight}`} fill="transparent" />
-          <LocatingBlocks contentWidth={contentWidth} contentHeight={contentHeight} />
-        </g>
+        <LocatingBlocks contentWidth={contentWidth} contentHeight={contentHeight} startX={startX} startY={startY} />
       </svg>
     );
   }
