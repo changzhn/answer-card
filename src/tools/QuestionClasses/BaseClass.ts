@@ -8,5 +8,6 @@ interface IReturnValue {
 }
 
 export default abstract class BaseClass {
+  public offsetY: number = 0;
   abstract splitSelf(currentPage: PageClass): IReturnValue;
 }

@@ -3,9 +3,10 @@ import BaseClass from './BaseClass';
 import { IGeneralQuestionType } from '@/types/interface';
 
 export default class AnswerQuestionClass implements BaseClass {
-  question: IGeneralQuestionType;
-  requiredHeight: number;
-  partNo: number;
+  public offsetY: number = 0;
+  public question: IGeneralQuestionType;
+  public requiredHeight: number;
+  public partNo: number;
 
   public constructor(question: IGeneralQuestionType, delta?: number) {
     this.question = question;
@@ -27,6 +28,7 @@ export default class AnswerQuestionClass implements BaseClass {
       nextQuestion = new AnswerQuestionClass(this.question, delta);
       nextQuestion.partNo = this.partNo + 1;
     }
+    this.offsetY = currentPage.contentHeight - currentPage.availableHeight;
     currentPage.addComponents(this);
     return {
       currentPage,

@@ -1,13 +1,13 @@
 import QuestionType from '@/constants/QuestionType';
-import { IBigQuestion } from '@/models/cardData';
 import BaseClass from './BaseClass';
 import PageClass from './PageClass';
 
 export default class TitleClass implements BaseClass {
-  requiredHeight: number;
-  question: IBigQuestion;
+  public offsetY: number = 0;
+  public requiredHeight: number;
+  public question: any;
 
-  constructor(question: IBigQuestion) {
+  constructor(question: any) {
     this.question = {
       ...question,
       questionType: QuestionType.Title,

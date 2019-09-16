@@ -8,7 +8,8 @@ import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
 import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
 import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
-export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
+// export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
+export type Union = AnswerQuestionClass | TitleClass;
 
 /**
  * 将题型数据分配到页面中
@@ -62,8 +63,9 @@ function question2page(cardData: ICardType) {
 function computeHeight(currentPage: PageClass, computedQuestion: Union) {
   let nextQuestion = null;
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
-    currentPage.addComponents(computedQuestion);
+    computedQuestion.offsetY = currentPage.contentHeight - currentPage.availableHeight;
     currentPage.availableHeight -= computedQuestion.requiredHeight;
+    currentPage.addComponents(computedQuestion);
   } else { // 需要分页处理
     const res = computedQuestion.splitSelf(currentPage)
     currentPage = res.currentPage;

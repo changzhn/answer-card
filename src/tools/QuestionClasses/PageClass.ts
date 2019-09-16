@@ -3,12 +3,12 @@ import Size, { ISizeItem } from '@/constants/Size';
 import { Union } from '@/tools/question2page';
 
 export default class PageClass {
-  contentHeight: number;
-  availableHeight: number;
-  pageNo: number;
-  size: ISizeItem;
-  paperType: PaperType;
-  components: Union[];
+  public contentHeight: number;
+  public availableHeight: number;
+  public pageNo: number;
+  public size: ISizeItem;
+  public paperType: PaperType;
+  public components: Union[];
 
   constructor(paperType: PaperType, pageNo: number) {
     this.paperType = paperType;
