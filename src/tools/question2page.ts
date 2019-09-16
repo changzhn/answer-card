@@ -2,23 +2,23 @@ import PaperType from '@/constants/PaperType';
 import QuestionType from '@/constants/QuestionType';
 import Size from '@/constants/Size';
 import ColumnNum from '@/constants/ColumnNum';
-import { ICardData } from '@/models/cardData';
 import PageClass from './QuestionClasses/PageClass';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
 import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
 import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
+import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
 export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
 
 /**
  * 将题型数据分配到页面中
  * @param cardData 题卡数据
- * @param paperType 纸型信息
  */
-function question2page(cardData: ICardData, paperType: PaperType) {
-  let pages: PageClass[] = [];
-  let page = new PageClass(paperType, 1);
+function question2page(cardData: ICardType) {
+  const pages: PageClass[] = [];
+  const { paperType, columnNum } = cardData;
+  let page = new PageClass(paperType, columnNum, 1);
   const { questions } = cardData;
 
   if (!Array.isArray(questions)) {
@@ -33,7 +33,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
     let { currentPage, nextQuestion } = computeHeight(page, computedQuestion);
     if (nextQuestion) {
       pages.push(currentPage);
-      page = new PageClass(currentPage.paperType, currentPage.pageNo + 1);
+      page = new PageClass(paperType, columnNum, currentPage.pageNo + 1);
       walk(nextQuestion);
     } else {
       page = currentPage;
@@ -47,11 +47,11 @@ function question2page(cardData: ICardData, paperType: PaperType) {
       case QuestionType.AnswerQuestion:
         bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
         break;
-      case QuestionType.EssayQuestion:
-        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
-        break;
-      case QuestionType.Choices: // 选择题需要统一去处理
-        walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));
+      // case QuestionType.EssayQuestion:
+      //   bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
+      //   break;
+      // case QuestionType.Choices: // 选择题需要统一去处理
+      //   walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));
       default:
     }
   });
@@ -63,7 +63,7 @@ function question2page(cardData: ICardData, paperType: PaperType) {
 function computeHeight(currentPage: PageClass, computedQuestion: Union) {
   let nextQuestion = null;
   if (currentPage.availableHeight >= computedQuestion.requiredHeight) {
-    currentPage.components.push(computedQuestion);
+    currentPage.addComponents(computedQuestion);
     currentPage.availableHeight -= computedQuestion.requiredHeight;
   } else { // 需要分页处理
     const res = computedQuestion.splitSelf(currentPage)

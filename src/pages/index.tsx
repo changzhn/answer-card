@@ -3,13 +3,14 @@ import styles from './index.css';
 import Page from '../components/Page';
 import SvgPage from '../components/SvgShape/Page';
 import { connect } from 'dva';
-import { ICardData } from '@/models/cardData';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
 import IModelState from '@/types/IModelState';
+import { ICardType } from '@/types/interface';
+
 
 interface IProps {
-  cardData: ICardData;
+  cardData: ICardType;
 }
 
 interface IState {
@@ -20,7 +21,7 @@ class AnswerCardMain extends React.Component<IProps, IState> {
 
   static getDerivedStateFromProps(nextProps: IProps) {
     const { cardData } = nextProps;
-    const pages = question2page(cardData, cardData.paperType);
+    const pages = question2page(cardData);
     return { pages };
   }
 
@@ -30,7 +31,7 @@ class AnswerCardMain extends React.Component<IProps, IState> {
 
   public componentDidMount() {
     const { cardData } = this.props;
-    const pages = question2page(cardData, cardData.paperType);
+    const pages = question2page(cardData);
     this.setState({ pages });
   }
 
@@ -40,20 +41,18 @@ class AnswerCardMain extends React.Component<IProps, IState> {
     // console.log(pages)
     return (
       <div className={styles.appWrapper}>
-        {/* <div className={styles.pagesWrapper}>
+        <div className={styles.pagesWrapper}>
           {
             pages.map(page => (
-              // <Page
-              //   cardData={cardData}
-              //   key={page.pageNo}
-              //   page={page}
-              //   totalPage={pages.length}
-              // />
-              <SvgPage key={page.pageNo} />
+              <SvgPage
+                cardData={cardData}
+                key={page.pageNo}
+                page={page}
+                totalPage={pages.length}
+              />
             ))
           }
-        </div> */}
-        <SvgPage />
+        </div>
       </div>
     )
   }

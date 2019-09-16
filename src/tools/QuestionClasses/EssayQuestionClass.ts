@@ -1,11 +1,11 @@
-import { IAnswerQuestion } from '@/models/cardData'
 import PageClass from './PageClass';
 import BaseClass from './BaseClass';
 import PaperType from '@/constants/PaperType';
 import Size from '@/constants/Size';
+import { IGeneralQuestionType } from '@/types/interface';
 
 export default class EssayQuestionClass implements BaseClass {
-  question: IAnswerQuestion;
+  question: IGeneralQuestionType;
   requiredHeight: number;
   partNo: number;
   paperType: PaperType;
@@ -14,7 +14,7 @@ export default class EssayQuestionClass implements BaseClass {
   restLength: number;
   prevRows: number;
 
-  public constructor(question: IAnswerQuestion, paperType: PaperType, restLength?: number) {
+  public constructor(question: IGeneralQuestionType, paperType: PaperType, restLength?: number) {
     this.question = question;
     this.paperType = paperType;
     this.partNo = 0;
@@ -40,7 +40,7 @@ export default class EssayQuestionClass implements BaseClass {
     const nextQuestion = new EssayQuestionClass(this.question, this.paperType, restLength);
     nextQuestion.partNo = this.partNo + 1;
     nextQuestion.prevRows = this.prevRows + this.rows;
-    currentPage.components.push(this);
+    currentPage.addComponents(this);
     return {
       currentPage,
       nextQuestion,

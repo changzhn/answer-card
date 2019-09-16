@@ -1,3 +1,4 @@
+import ColumnNum from '@/constants/ColumnNum';
 import PaperType from '@/constants/PaperType';
 import Size, { ISizeItem } from '@/constants/Size';
 import { Union } from '@/tools/question2page';
@@ -8,12 +9,14 @@ export default class PageClass {
   pageNo: number;
   size: ISizeItem;
   paperType: PaperType;
-  components: Array<Union>;
+  components: Union[];
+  columnNum: ColumnNum;
 
-  constructor(paperType: PaperType, pageNo: number) {
-    this.pageNo = pageNo;
+  constructor(paperType: PaperType, columnNum: ColumnNum, pageNo: number) {
     this.paperType = paperType;
-    this.size = this.getSize(this.paperType);
+    this.columnNum = columnNum;
+    this.pageNo = pageNo;
+    this.size = this._getSize(this.paperType);
     this.contentHeight = this.size.contentHeight;
 
     if (pageNo === 1) {
@@ -25,7 +28,11 @@ export default class PageClass {
     this.components = [];
   }
 
-  getSize(paperType: PaperType): ISizeItem {
+  _getSize(paperType: PaperType): ISizeItem {
     return Size[paperType];
+  }
+
+  addComponents(component: Union) {
+    this.components.push(component);
   }
 }

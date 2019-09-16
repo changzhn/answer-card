@@ -1,7 +1,7 @@
-import { ICardData } from '@/models/cardData';
+import { ICardType } from './interface';
 
 interface IModelState {
-  cardData: ICardData,
+  cardData: ICardType,
 }
 
 export default IModelState;

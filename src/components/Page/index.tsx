@@ -4,12 +4,12 @@ import LocatingBlocks from '@/components/LocatingBlocks';
 import PageClass from '@/tools/QuestionClasses/PageClass';
 import getComponent from './getComponent';
 import CardInfo from '@/components/CardInfo';
-import { ICardData } from '@/models/cardData';
+// import { ICardData } from '@/models/cardData';
 
 interface IProps {
   page: PageClass;
   totalPage: number;
-  cardData: ICardData;
+  cardData: any;
 }
 export default class Page extends React.Component<IProps> {
 	public render() {

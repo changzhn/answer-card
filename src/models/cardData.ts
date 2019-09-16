@@ -1,5 +1,6 @@
 import PaperType from '../constants/PaperType';
 import ColumnNum from '../constants/ColumnNum';
+import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
 const choiceQuestion = {
   questionId: 323,
@@ -9,8 +10,8 @@ const choiceQuestion = {
   length: 4,
 }
 
-const anwerQuestion = {
-  questionId: 123,
+const anwerQuestion: IGeneralQuestionType = {
+  questionId: '123',
   questionNo: 1,
   questionType: 3,
   height: 400,
@@ -25,8 +26,8 @@ const essayQuestion = {
   height: 40,
 };
 
-const bigAnswerQuestion = {
-  questionId: 111,
+const bigAnswerQuestion: IGeneralBigQuestionType = {
+  questionId: '111',
   questionNo: 2,
   questionTitle: '解答题',
   questionType: 3,
@@ -54,23 +55,23 @@ const bigChoiceQuestion = {
   questions: new Array(50).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random(), questionNo: idx + 1})),
 }
 
-const cardData = {
-  cardId: 10010,
+const cardData: ICardType = {
+  cardId: '10010',
   cardTitle: '测试答题卡',
-  paperType: PaperType.A41,
+  paperType: PaperType.A4,
   columnNum: ColumnNum.one,
   questions: [
-    bigChoiceQuestion,
+    // bigChoiceQuestion,
     bigAnswerQuestion,
-    bigEssayQuestion,
+    // bigEssayQuestion,
   ]
 };
 
-export type IAnswerQuestion = typeof anwerQuestion;
-export type IBigQuestion = typeof bigAnswerQuestion | typeof bigEssayQuestion | typeof bigChoiceQuestion;
-export type ICardData = typeof cardData;
+// export type IAnswerQuestion = typeof anwerQuestion;
+// export type IBigQuestion = typeof bigAnswerQuestion | typeof bigEssayQuestion | typeof bigChoiceQuestion;
+// export type ICardData = typeof cardData;
 
-const initState: ICardData = cardData;
+const initState: ICardType = cardData;
 
 export default {
   namespace: 'cardData',

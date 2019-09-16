@@ -1,13 +1,13 @@
-import { IAnswerQuestion } from '@/models/cardData'
 import PageClass from './PageClass';
 import BaseClass from './BaseClass';
+import { IGeneralQuestionType } from '@/types/interface';
 
 export default class AnswerQuestionClass implements BaseClass {
-  question: IAnswerQuestion;
+  question: IGeneralQuestionType;
   requiredHeight: number;
   partNo: number;
 
-  public constructor(question: IAnswerQuestion, delta?: number) {
+  public constructor(question: IGeneralQuestionType, delta?: number) {
     this.question = question;
     this.partNo = 0;
     // 计算该解答题需要的空间
@@ -27,7 +27,7 @@ export default class AnswerQuestionClass implements BaseClass {
       nextQuestion = new AnswerQuestionClass(this.question, delta);
       nextQuestion.partNo = this.partNo + 1;
     }
-    currentPage.components.push(this);
+    currentPage.addComponents(this);
     return {
       currentPage,
       nextQuestion,
