@@ -104,4 +104,12 @@ export default class Utils {
     }
     return newchar;
   }
+
+  static mm2px(num: number) {
+    return num * 10 / 2.54;
+  }
+
+  static px2mm(num: number) {
+    return num * 2.54 / 10;
+  }
 }

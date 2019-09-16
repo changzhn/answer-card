@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './index.css';
 import Page from '../components/Page';
+import SvgPage from '../components/SvgShape/Page';
 import { connect } from 'dva';
 import { ICardData } from '@/models/cardData';
 import question2page from '@/tools/question2page';
@@ -36,21 +37,23 @@ class AnswerCardMain extends React.Component<IProps, IState> {
   public render() {
     const { cardData } = this.props;
     const pages: PageClass[] = this.state.pages;
-    console.log(pages)
+    // console.log(pages)
     return (
       <div className={styles.appWrapper}>
-        <div className={styles.pagesWrapper}>
+        {/* <div className={styles.pagesWrapper}>
           {
             pages.map(page => (
-              <Page
-                cardData={cardData}
-                key={page.pageNo}
-                page={page}
-                totalPage={pages.length}
-              />
+              // <Page
+              //   cardData={cardData}
+              //   key={page.pageNo}
+              //   page={page}
+              //   totalPage={pages.length}
+              // />
+              <SvgPage key={page.pageNo} />
             ))
           }
-        </div>
+        </div> */}
+        <SvgPage />
       </div>
     )
   }
