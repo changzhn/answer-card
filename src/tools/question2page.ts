@@ -1,7 +1,6 @@
 import PaperType from '@/constants/PaperType';
 import QuestionType from '@/constants/QuestionType';
 import Size from '@/constants/Size';
-import ColumnNum from '@/constants/ColumnNum';
 import PageClass from './QuestionClasses/PageClass';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
@@ -29,12 +28,12 @@ function question2page(cardData: ICardType) {
    * 闭包函数，将题插入到页面
    * @param computedQuestion 要计算的题
    */
-  function walk(computedQuestion: Union) {
+  function walk(computedQuestion: Union): any {
     let { currentPage, nextQuestion } = computeHeight(page, computedQuestion);
     if (nextQuestion) {
       pages.push(currentPage);
       page = new PageClass(paperType, currentPage.pageNo + 1);
-      walk(nextQuestion);
+      return walk(nextQuestion);
     } else {
       page = currentPage;
     }

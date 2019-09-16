@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './index.css';
 import Page from '../components/Page';
-import SvgPage from '../components/SvgShape/Page';
+import SvgPage, { IPageProp } from '../components/SvgShape/Page';
 import { connect } from 'dva';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
 import IModelState from '@/types/IModelState';
 import { ICardType } from '@/types/interface';
+import _ from 'lodash';
 
 
 interface IProps {
@@ -35,18 +36,37 @@ class AnswerCardMain extends React.Component<IProps, IState> {
     this.setState({ pages });
   }
 
+  public getPageProps() {
+    const { pages } = this.state;
+    const { cardData: { columnNum = 1 } } = this.props;
+    const pagesChunk = _.chunk(pages, columnNum);
+    const result: IPageProp[] = [];
+    pagesChunk.forEach(chunk => { // [[], []]
+      if (Array.isArray(chunk) && chunk.length) {
+        const { paperType, size } = chunk[0] as PageClass;
+        result.push({
+          paperType,
+          columnNum,
+          size,
+          pages: chunk,
+        });
+      }
+    });
+    return result;
+  }
+
   public render() {
     const { cardData } = this.props;
-    const pages: PageClass[] = this.state.pages;
-    // console.log(pages)
+    let pages = this.getPageProps();
+    
     return (
       <div className={styles.appWrapper}>
         <div className={styles.pagesWrapper}>
           {
-            pages.map(page => (
+            pages.map((page, idx) => (
               <SvgPage
                 cardData={cardData}
-                key={page.pageNo}
+                key={idx}
                 page={page}
                 totalPage={pages.length}
               />

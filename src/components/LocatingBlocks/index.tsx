@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ICardData } from '@/models/cardData';
+// import { ICardData } from '@/models/cardData';
 import BlockItem from './BlockItem';
 import PaperType from '@/constants/PaperType';
 
 interface IProps {
-  cardData: ICardData;
+  cardData: any;
   currentPage: number;
 };
 
@@ -15,9 +15,9 @@ const leftBottom = 'leftBottom';
 const LocatingBlock: React.SFC<IProps> = (props) => {
   const { cardData: { paperType, columnNum } } = props;
   let items = [leftTop, rightTop, leftBottom]; // A4
-  if (paperType === PaperType.A32) {
-    // TODO:
-  }
+  // if (paperType === PaperType.A32) {
+  //   // TODO:
+  // }
 
   return (
     <React.Fragment>
