@@ -10,6 +10,7 @@ import { ISizeItem } from '@/constants/Size';
 import LocatingBlocks from '../LocatingBlocks';
 import PageNum from '../PageNum';
 import getComponent from './getComponent';
+import CardInfo from '../CardInfo';
 
 export interface IPageProp {
   paperType: PaperType;
@@ -35,7 +36,7 @@ export default class SvgPage extends React.Component<IProps> {
   }
 
   public render() {
-    const { page } = this.props;
+    const { page, cardData } = this.props;
     const { size, columnNum } = page;
     const { actualWidth, actualHeight, contentWidth, contentHeight } = size;
     // @ts-ignore FIXME:
@@ -69,6 +70,7 @@ export default class SvgPage extends React.Component<IProps> {
                 transform={`translate(${offsetX}, ${offsetY})`}
               >
                 <rect x="0" y="0" width={`${colWidth}`} height={`${size.contentHeight}`} fill="#eee" />
+                {pageNo === 1 && <CardInfo cardData={cardData} page={page} colWidth={colWidth} />}
                 {
                   col.components.map(component => getComponent(component, colWidth))
                 }
