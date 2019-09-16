@@ -8,6 +8,7 @@ import PaperType from '@/constants/PaperType';
 import ColumnNum from '@/constants/ColumnNum';
 import { ISizeItem } from '@/constants/Size';
 import LocatingBlocks from '../LocatingBlocks';
+import PageNum from '../PageNum';
 
 export interface IPageProp {
   paperType: PaperType;
@@ -67,6 +68,7 @@ export default class SvgPage extends React.Component<IProps> {
                 transform={`translate(${offsetX}, ${offsetY})`}
               >
                 <rect x="0" y="0" width={`${colWidth}`} height={`${size.contentHeight}`} fill="#eee" />
+                <PageNum contentHeight={contentHeight} colWidth={colWidth} pageNo={pageNo} />
               </g>
             );
           })
