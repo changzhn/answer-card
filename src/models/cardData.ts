@@ -23,7 +23,7 @@ const essayQuestion: IGeneralQuestionType = {
   questionId: '223',
   questionNo: 1,
   questionType: QuestionType.EssayQuestion,
-  length: 800,
+  length: 8000,
   height: 40,
 };
 
