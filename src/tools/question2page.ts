@@ -9,7 +9,7 @@ import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
 import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
 // export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
-export type Union = AnswerQuestionClass | TitleClass;
+export type Union = AnswerQuestionClass | TitleClass | EssayQuestionClass;
 
 /**
  * 将题型数据分配到页面中
@@ -47,9 +47,9 @@ function question2page(cardData: ICardType) {
       case QuestionType.AnswerQuestion:
         bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
         break;
-      // case QuestionType.EssayQuestion:
-      //   bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
-      //   break;
+      case QuestionType.EssayQuestion:
+        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
+        break;
       // case QuestionType.Choices: // 选择题需要统一去处理
       //   walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));
       default:

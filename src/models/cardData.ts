@@ -1,6 +1,7 @@
 import PaperType from '../constants/PaperType';
 import ColumnNum from '../constants/ColumnNum';
 import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
+import QuestionType from '@/constants/QuestionType';
 
 const choiceQuestion = {
   questionId: 323,
@@ -14,14 +15,14 @@ const anwerQuestion: IGeneralQuestionType = {
   questionId: '123',
   questionNo: 1,
   questionType: 3,
-  height: 400,
+  height: 40,
   length: 800,
 };
 
-const essayQuestion = {
-  questionId: 223,
+const essayQuestion: IGeneralQuestionType = {
+  questionId: '223',
   questionNo: 1,
-  questionType: 4,
+  questionType: QuestionType.EssayQuestion,
   length: 800,
   height: 40,
 };
@@ -36,11 +37,11 @@ const bigAnswerQuestion: IGeneralBigQuestionType = {
   ]
 }
 
-const bigEssayQuestion = {
-  questionId: 222,
+const bigEssayQuestion: IGeneralBigQuestionType = {
+  questionId: '222',
   questionNo: 3,
   questionTitle: '作文题',
-  questionType: 4,
+  questionType: QuestionType.EssayQuestion,
   questions: [
     essayQuestion,
   ]
@@ -63,7 +64,7 @@ const cardData: ICardType = {
   questions: [
     // bigChoiceQuestion,
     bigAnswerQuestion,
-    // bigEssayQuestion,
+    bigEssayQuestion,
   ]
 };
 

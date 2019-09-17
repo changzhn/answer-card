@@ -5,14 +5,15 @@ import Size from '@/constants/Size';
 import { IGeneralQuestionType } from '@/types/interface';
 
 export default class EssayQuestionClass implements BaseClass {
-  question: IGeneralQuestionType;
-  requiredHeight: number;
-  partNo: number;
-  paperType: PaperType;
-  lenPerRow: number;
-  rows: number;
-  restLength: number;
-  prevRows: number;
+  public offsetY: number = 0;
+  public question: IGeneralQuestionType;
+  public requiredHeight: number;
+  public partNo: number;
+  public paperType: PaperType;
+  public lenPerRow: number;
+  public rows: number;
+  public restLength: number;
+  public prevRows: number;
 
   public constructor(question: IGeneralQuestionType, paperType: PaperType, restLength?: number) {
     this.question = question;
@@ -40,6 +41,8 @@ export default class EssayQuestionClass implements BaseClass {
     const nextQuestion = new EssayQuestionClass(this.question, this.paperType, restLength);
     nextQuestion.partNo = this.partNo + 1;
     nextQuestion.prevRows = this.prevRows + this.rows;
+    this.offsetY = currentPage.contentHeight - currentPage.availableHeight;
+    this.requiredHeight = currentPage.availableHeight;
     currentPage.addComponents(this);
     return {
       currentPage,
