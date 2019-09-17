@@ -14,7 +14,7 @@ const CardTitle: React.FunctionComponent<IProps> = ({ colWidth, cardTitle }) => 
       width={colWidth}
       height={10}
       text={cardTitle}
-      align="cennter"
+      align="center"
       fontSize="4pt"
     />
   );

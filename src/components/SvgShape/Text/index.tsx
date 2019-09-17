@@ -6,13 +6,13 @@ interface IProps {
   width: number;
   height: number;
   text: string;
-  align: 'cennter' | 'left';
+  align: 'center' | 'left';
   fontSize?: string;
 }
 
 const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize }) => {
   const extraStyle: any = {};
-  if (align === 'cennter') {
+  if (align === 'center') {
     extraStyle.textAnchor = 'middle';
   }
 
@@ -20,7 +20,7 @@ const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize })
     <g transform={`translate(${x} ${y})`}>
       <rect x="0" y="0" width={width} height={height} fill="transparent" />
       <text
-        x={align === 'cennter' ? width / 2 : 0}
+        x={align === 'center' ? width / 2 : 0}
         y={height / 1.5}
         width={width}
         height={height}

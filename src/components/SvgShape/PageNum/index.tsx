@@ -16,7 +16,7 @@ const PageNum: React.SFC<IProps> = ({ pageNo, contentHeight, colWidth }) => {
       width={colWidth}
       height={10}
       text={`第${pageNo}页`}
-      align="cennter"
+      align="center"
       fontSize="3pt"
     />
   );
