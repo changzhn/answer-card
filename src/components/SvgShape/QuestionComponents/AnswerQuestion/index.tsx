@@ -11,18 +11,21 @@ export interface IProps {
 export default class AnswerQuestion extends React.Component<IProps> {
   public render() {
     const { component, colWidth } = this.props;
-    const { requiredHeight, offsetY } = component;
+    const { requiredHeight, offsetY, partNo } = component;
     return (
       <g transform={`translate(0, ${offsetY})`}>
         <rect x="0" y="0" width={colWidth} height={requiredHeight} fill="transparent" stroke="#000" strokeWidth="0.2" />
-        <Text 
-          x={2}
-          y={2}
-          width={2}
-          height={2}
-          text={`${component.question.questionNo}、`}
-          align="center"
-        />
+        {
+          partNo === 0 &&
+          <Text 
+            x={2}
+            y={2}
+            width={2}
+            height={2}
+            text={`${component.question.questionNo}、`}
+            align="center"
+          />
+        }
       </g>
     );
   }
