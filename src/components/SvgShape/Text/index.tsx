@@ -10,7 +10,7 @@ interface IProps {
   fontSize?: string;
 }
 
-const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize }) => {
+const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = '3pt' }) => {
   const extraStyle: any = {};
   if (align === 'center') {
     extraStyle.textAnchor = 'middle';

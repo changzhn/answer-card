@@ -14,7 +14,7 @@ const CardInfo: React.SFC<IProps> = ({ page, colWidth, cardData }) => {
   const { paperType, size, columnNum } = page;
 
   return (
-    <g transform="ranslate(0, 0)">
+    <g transform="translate(0, 0)">
       <rect x="0" y="0" width={colWidth} height={size.cardInfoHeight} fill="transparent" />
       <CardTitle cardTitle={cardData.cardTitle} colWidth={colWidth} />
       <HandWrittenInfo colWidth={colWidth} />
