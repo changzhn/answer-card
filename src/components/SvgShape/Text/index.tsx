@@ -11,7 +11,9 @@ interface IProps {
 }
 
 const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = '3pt' }) => {
-  const extraStyle: any = {};
+  const extraStyle: any = {
+    dominantBaseline: 'middle',
+  };
   if (align === 'center') {
     extraStyle.textAnchor = 'middle';
   }
@@ -21,7 +23,6 @@ const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = 
       <rect x="0" y="0" width={width} height={height} fill="transparent" />
       <text
         x={align === 'center' ? width / 2 : 0}
-        y={height / 1.5}
         width={width}
         height={height}
         style={{
