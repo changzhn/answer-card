@@ -1,6 +1,6 @@
 import PaperType from '../constants/PaperType';
 import ColumnNum from '../constants/ColumnNum';
-import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
+import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType, IFillBlankQuestionType } from '@/types/interface';
 import QuestionType from '@/constants/QuestionType';
 
 const choiceQuestion: IGeneralQuestionType = {
@@ -9,6 +9,41 @@ const choiceQuestion: IGeneralQuestionType = {
   questionType: 3,
   height: 40,
   length: 4,
+};
+
+function createFillBlankQuestion() {
+  const fillBlankQuestion: IGeneralQuestionType = {
+    questionId: Math.random() + '',
+    questionNo: 1,
+    questionType: QuestionType.FillBlank,
+    height: 10,
+    length: 4,
+  };
+  return fillBlankQuestion;
+}
+
+const bigFillBlankQuestion: IGeneralBigQuestionType = {
+  questionId: '1191',
+  questionNo: 6,
+  questionTitle: '填空题',
+  questionType: QuestionType.FillBlank,
+  questions: [
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+  ] as IFillBlankQuestionType[]
 }
 
 const anwerQuestion: IGeneralQuestionType = {
@@ -70,6 +105,7 @@ const cardData: ICardType = {
     bigChoiceQuestion,
     bigAnswerQuestion,
     bigEssayQuestion,
+    bigFillBlankQuestion,
   ]
 };
 

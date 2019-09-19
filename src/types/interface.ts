@@ -9,10 +9,16 @@ export interface IGeneralQuestionType {
   questionType: number;
 };
 
+export interface IFillBlankQuestionType {
+  rowId: string;
+  height: number;
+  group: IGeneralQuestionType[]
+};
+
 export interface IGeneralBigQuestionType {
   questionId: string;
   questionNo: number;
-  questions: IGeneralQuestionType[];
+  questions: IGeneralQuestionType[] | IFillBlankQuestionType[];
   questionTitle: string;
   questionType: number;
   groupSize?: number; // 选择题一组的小题数

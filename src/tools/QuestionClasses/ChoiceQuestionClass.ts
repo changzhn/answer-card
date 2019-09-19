@@ -49,7 +49,7 @@ export default class ChoiceQuestionCLass implements BaseClass {
     // 组高
     const groupHeight = (groupSize as number) * 5 + 2;
     // 分组
-    const groups = _.chunk(this.question.questions, groupSize);
+    const groups = _.chunk(this.question.questions as IGeneralQuestionType[], groupSize);
 
     let row: IGroupRow = {
       height: groupHeight,

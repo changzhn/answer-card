@@ -44,10 +44,10 @@ function question2page(cardData: ICardType) {
     walk(new TitleClass(bigQuestion));
     switch(questionType) {
       case QuestionType.AnswerQuestion:
-        bigQuestion.questions.forEach(subQuestion => walk(new AnswerQuestionClass(subQuestion)));
+        bigQuestion.questions.forEach((subQuestion: any) => walk(new AnswerQuestionClass(subQuestion)));
         break;
       case QuestionType.EssayQuestion:
-        bigQuestion.questions.forEach(subQuestion => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
+        bigQuestion.questions.forEach((subQuestion: any) => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
         break;
       case QuestionType.Choices: // 选择题需要统一去处理
         walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));
