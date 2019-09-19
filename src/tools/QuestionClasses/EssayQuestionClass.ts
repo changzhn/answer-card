@@ -36,14 +36,21 @@ export default class EssayQuestionClass implements BaseClass {
   }
 
   public splitSelf(currentPage: PageClass) {
-    this.rows = Math.floor((currentPage.availableHeight - 10) / (8 + 2.5));
+    let rows = Math.floor((currentPage.availableHeight - 10) / (8 + 2.5));
+    if (rows <=0 ) {
+      rows = 0;
+    }
+    this.rows = rows;
     const restLength = this.restLength - this.rows * this.lenPerRow;
     const nextQuestion = new EssayQuestionClass(this.question, this.paperType, restLength);
     nextQuestion.partNo = this.partNo + 1;
     nextQuestion.prevRows = this.prevRows + this.rows;
-    this.offsetY = currentPage.contentHeight - currentPage.availableHeight;
-    this.requiredHeight = currentPage.availableHeight;
-    currentPage.addComponents(this);
+
+    if (this.rows !== 0) {
+      this.offsetY = currentPage.contentHeight - currentPage.availableHeight;
+      this.requiredHeight = currentPage.availableHeight;
+      currentPage.addComponents(this);
+    }
     return {
       currentPage,
       nextQuestion,
