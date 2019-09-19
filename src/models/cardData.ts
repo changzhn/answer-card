@@ -64,7 +64,7 @@ const cardData: ICardType = {
   questions: [
     bigChoiceQuestion,
     bigAnswerQuestion,
-    bigEssayQuestion,
+    // bigEssayQuestion,
   ]
 };
 

@@ -75,18 +75,25 @@ export default class ChoiceQuestionCLass implements BaseClass {
     groups.forEach(group => {
       let groupCols = this.getGroupCol(group); // 1或2
       cols += groupCols;
-      if (cols > groupPerRow) {
+      if (cols >= groupPerRow) {
+        if (cols === groupPerRow) {
+          row.groupCol.push({
+            group,
+            col: groupCols,
+          });
+        }
         cols = 0;
         this.groupRows.push(row);
         row = {
           height: groupHeight,
           groupCol: [],
         };
+      } else {
+        row.groupCol.push({
+          group,
+          col: groupCols,
+        });
       }
-      row.groupCol.push({
-        group,
-        col: groupCols,
-      });
     });
     if (row.groupCol.length) {
       this.groupRows.push(row);
