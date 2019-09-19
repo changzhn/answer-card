@@ -68,10 +68,6 @@ const cardData: ICardType = {
   ]
 };
 
-// export type IAnswerQuestion = typeof anwerQuestion;
-// export type IBigQuestion = typeof bigAnswerQuestion | typeof bigEssayQuestion | typeof bigChoiceQuestion;
-// export type ICardData = typeof cardData;
-
 const initState: ICardType = cardData;
 
 export default {
