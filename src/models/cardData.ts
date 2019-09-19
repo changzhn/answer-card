@@ -7,7 +7,7 @@ const choiceQuestion: IGeneralQuestionType = {
   questionId: '323',
   questionNo: 1,
   questionType: 3,
-  height: 40,
+  height: 10,
   length: 4,
 };
 
@@ -43,6 +43,26 @@ const bigFillBlankQuestion: IGeneralBigQuestionType = {
       height: 10,
       group: [createFillBlankQuestion(), createFillBlankQuestion()]
     },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
+    {
+      rowId: Math.random() + '',
+      height: 10,
+      group: [createFillBlankQuestion(), createFillBlankQuestion()]
+    },
   ] as IFillBlankQuestionType[]
 }
 
@@ -50,7 +70,7 @@ const anwerQuestion: IGeneralQuestionType = {
   questionId: '123',
   questionNo: 1,
   questionType: 3,
-  height: 40,
+  height: 10,
   length: 800,
 };
 
@@ -59,7 +79,7 @@ const essayQuestion: IGeneralQuestionType = {
   questionNo: 1,
   questionType: QuestionType.EssayQuestion,
   length: 800,
-  height: 40,
+  height: 10,
 };
 
 const bigAnswerQuestion: IGeneralBigQuestionType = {
@@ -93,7 +113,7 @@ const bigChoiceQuestion: IGeneralBigQuestionType = {
   questionTitle: '选择题',
   questionType: 1,
   groupSize: 5, // 以几个小题为1组
-  questions: new Array(500).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random() + '', questionNo: idx + 1})),
+  questions: new Array(200).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random() + '', questionNo: idx + 1})),
 }
 
 const cardData: ICardType = {
@@ -103,9 +123,9 @@ const cardData: ICardType = {
   columnNum: ColumnNum.two,
   questions: [
     bigChoiceQuestion,
-    bigAnswerQuestion,
-    bigEssayQuestion,
     bigFillBlankQuestion,
+    // bigAnswerQuestion,
+    // bigEssayQuestion,
   ]
 };
 

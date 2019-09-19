@@ -9,6 +9,8 @@ import EssayQuestion from '@/components/QuestionComponents/EssayQuestion';
 import EssayQuestionClass from '@/tools/QuestionClasses/EssayQuestionClass';
 import ChoiceQuestion from '@/components/QuestionComponents/ChoiceQuestion';
 import ChoiceQuestionCLass from '@/tools/QuestionClasses/ChoiceQuestionClass';
+import FillBlankQuestion from '@/components/QuestionComponents/FillBlankQuestion';
+import FillBlankClass from '@/tools/QuestionClasses/FillBlankClass';
 
 export default function getComponent(component: Union, colWidth: number) {
   const { questionType, questionId } = component.question;
@@ -24,5 +26,8 @@ export default function getComponent(component: Union, colWidth: number) {
 
     case QuestionType.Choices:
       return <ChoiceQuestion key={questionId} component={(component as ChoiceQuestionCLass)} colWidth={colWidth} />;
+
+    case QuestionType.FillBlank:
+      return <FillBlankQuestion key={questionId} component={(component as FillBlankClass)} colWidth={colWidth} />;
   }
 }

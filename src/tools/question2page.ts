@@ -6,9 +6,10 @@ import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
 import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
 import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
+import FillBlankClass from './QuestionClasses/FillBlankClass';
 import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
-export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass;
+export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass | FillBlankClass;
 
 /**
  * 将题型数据分配到页面中
@@ -51,6 +52,10 @@ function question2page(cardData: ICardType) {
         break;
       case QuestionType.Choices: // 选择题需要统一去处理
         walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));
+        break;
+      case QuestionType.FillBlank:
+        walk(new FillBlankClass(bigQuestion));
+        break;
       default:
     }
   });

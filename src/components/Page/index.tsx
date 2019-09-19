@@ -48,7 +48,6 @@ export default class SvgPage extends React.Component<IProps> {
       // @ts-ignore
       gutter = size[`gutter${columnNum}`];
     }
-    console.log(page)
     return (
       <svg
         width={`${Utils.mm2px(size.actualWidth)}`}
