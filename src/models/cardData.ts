@@ -3,8 +3,8 @@ import ColumnNum from '../constants/ColumnNum';
 import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 import QuestionType from '@/constants/QuestionType';
 
-const choiceQuestion = {
-  questionId: 323,
+const choiceQuestion: IGeneralQuestionType = {
+  questionId: '323',
   questionNo: 1,
   questionType: 3,
   height: 40,
@@ -23,7 +23,7 @@ const essayQuestion: IGeneralQuestionType = {
   questionId: '223',
   questionNo: 1,
   questionType: QuestionType.EssayQuestion,
-  length: 8000,
+  length: 80,
   height: 40,
 };
 
@@ -47,13 +47,13 @@ const bigEssayQuestion: IGeneralBigQuestionType = {
   ]
 }
 
-const bigChoiceQuestion = {
-  questionId: 222222,
+const bigChoiceQuestion: IGeneralBigQuestionType = {
+  questionId: '222222',
   questionNo: 1,
   questionTitle: '选择题',
   questionType: 1,
   groupSize: 5, // 以几个小题为1组
-  questions: new Array(50).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random(), questionNo: idx + 1})),
+  questions: new Array(50).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random() + '', questionNo: idx + 1})),
 }
 
 const cardData: ICardType = {
@@ -62,7 +62,7 @@ const cardData: ICardType = {
   paperType: PaperType.A3,
   columnNum: ColumnNum.two,
   questions: [
-    // bigChoiceQuestion,
+    bigChoiceQuestion,
     bigAnswerQuestion,
     bigEssayQuestion,
   ]

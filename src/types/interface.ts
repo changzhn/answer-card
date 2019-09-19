@@ -15,6 +15,7 @@ export interface IGeneralBigQuestionType {
   questions: IGeneralQuestionType[];
   questionTitle: string;
   questionType: number;
+  groupSize?: number; // 选择题一组的小题数
 };
 
 export interface ICardType {

@@ -7,7 +7,8 @@ import AnswerQuestion from '@/components/SvgShape/QuestionComponents/AnswerQuest
 import AnswerQuestionClass from '@/tools/QuestionClasses/AnswerQuestionClass';
 import EssayQuestion from '@/components/SvgShape/QuestionComponents/EssayQuestion';
 import EssayQuestionClass from '@/tools/QuestionClasses/EssayQuestionClass';
-// import ChoiceQuestion from '../QuestionComponents/ChoiceQuestion';
+import ChoiceQuestion from '@/components/SvgShape/QuestionComponents/ChoiceQuestion';
+import ChoiceQuestionCLass from '@/tools/QuestionClasses/ChoiceQuestionClass';
 
 export default function getComponent(component: Union, colWidth: number) {
   const { questionType, questionId } = component.question;
@@ -21,7 +22,7 @@ export default function getComponent(component: Union, colWidth: number) {
     case QuestionType.EssayQuestion:
       return <EssayQuestion key={questionId} component={(component as EssayQuestionClass)} colWidth={colWidth} />;
 
-  //   case QuestionType.Choices:
-  //     return <ChoiceQuestion key={questionId} />;
+    case QuestionType.Choices:
+      return <ChoiceQuestion key={questionId} component={(component as ChoiceQuestionCLass)} colWidth={colWidth} />;
   }
 }
