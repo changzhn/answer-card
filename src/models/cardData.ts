@@ -23,7 +23,7 @@ const essayQuestion: IGeneralQuestionType = {
   questionId: '223',
   questionNo: 1,
   questionType: QuestionType.EssayQuestion,
-  length: 80,
+  length: 800,
   height: 40,
 };
 
@@ -34,6 +34,11 @@ const bigAnswerQuestion: IGeneralBigQuestionType = {
   questionType: 3,
   questions: [
     anwerQuestion,
+    {
+      ...anwerQuestion,
+      questionId: '1231',
+      questionNo: 2,
+    }
   ]
 }
 

@@ -116,6 +116,7 @@ export default class ChoiceQuestionCLass implements BaseClass {
     const currentGroupRows = this.groupRows.slice(0, splitIdx);
     const nextGroupRows = this.groupRows.slice(splitIdx);
     this.groupRows = currentGroupRows;
+    this.requiredHeight = this.getRequiredHeight();
     this.offsetY = contentHeight - availableHeight;
     currentPage.addComponents(this);
     const nextQuestion = new ChoiceQuestionCLass(this.question, this.paperType, nextGroupRows);
