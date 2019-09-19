@@ -1,10 +1,8 @@
 import PageClass from './PageClass';
-import TitleClass from './TitleClass';
-import AnswerQuestionClass from './AnswerQuestionClass';
 
 interface IReturnValue {
   currentPage: PageClass;
-  nextQuestion: TitleClass | AnswerQuestionClass | null; // TODO:
+  nextQuestion: any;
 }
 
 export default abstract class BaseClass {

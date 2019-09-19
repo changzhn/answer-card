@@ -53,7 +53,7 @@ const bigChoiceQuestion: IGeneralBigQuestionType = {
   questionTitle: '选择题',
   questionType: 1,
   groupSize: 5, // 以几个小题为1组
-  questions: new Array(50).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random() + '', questionNo: idx + 1})),
+  questions: new Array(500).fill(0).map((_, idx) => ({...choiceQuestion, questionId: Math.random() + '', questionNo: idx + 1})),
 }
 
 const cardData: ICardType = {

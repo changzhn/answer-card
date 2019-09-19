@@ -37,15 +37,25 @@ export default class ChoiceQuestionCLass implements BaseClass {
   public paperType: PaperType;
   public groupRows: IGroupRow[] = [];
 
-  public constructor(question: IGeneralBigQuestionType, paperType: PaperType) {
+  public constructor(question: IGeneralBigQuestionType, paperType: PaperType, groupRows?: IGroupRow[]) {
     this.question = question;
     this.partNo = 0;
     this.paperType = paperType;
+
+    if (groupRows) {
+      this.groupRows = groupRows;
+    } else {
+      this.setGroupRows();
+    }
+
     this.requiredHeight = this.getRequiredHeight();
   }
 
   public getRequiredHeight() {
-    let groupRows = 1;
+    return this.groupRows.reduce((prev, next) => prev + next.height, 0);
+  }
+
+  public setGroupRows() {
     let cols = 0;
 
     // 纸型一行容纳下的组数
@@ -67,7 +77,6 @@ export default class ChoiceQuestionCLass implements BaseClass {
       cols += groupCols;
       if (cols > groupPerRow) {
         cols = 0;
-        groupRows++;
         this.groupRows.push(row);
         row = {
           height: groupHeight,
@@ -82,7 +91,6 @@ export default class ChoiceQuestionCLass implements BaseClass {
     if (row.groupCol.length) {
       this.groupRows.push(row);
     }
-    return groupRows * groupHeight;
   }
 
   /**
@@ -102,8 +110,24 @@ export default class ChoiceQuestionCLass implements BaseClass {
   }
 
   public splitSelf(currentPage: PageClass) {
-    const nextQuestion = null;
-    this.offsetY = currentPage.contentHeight - currentPage.availableHeight;
+    const { contentHeight, availableHeight } = currentPage;
+    let splitIdx = 0;
+    let totalHeight = 0;
+
+    for(let i = 0; i < this.groupRows.length; i++) {
+      totalHeight += this.groupRows[i].height;
+      if (totalHeight > availableHeight) {
+        splitIdx = i;
+        break;
+      }
+    }
+
+    const currentGroupRows = this.groupRows.slice(0, splitIdx);
+    const nextGroupRows = this.groupRows.slice(splitIdx);
+    this.groupRows = currentGroupRows;
+    this.offsetY = contentHeight - availableHeight;
+    currentPage.addComponents(this);
+    const nextQuestion = new ChoiceQuestionCLass(this.question, this.paperType, nextGroupRows);
     return {
       currentPage,
       nextQuestion,
