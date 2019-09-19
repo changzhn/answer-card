@@ -13,22 +13,6 @@ export interface IGroupRow {
   }[];
 };
 
-// IGeneralQuestionType[][][]的类型
-// [
-//   {
-//     height: 25,
-//     group: [
-//       [], [], [], [], []
-//     ]
-//   },
-//   {
-//     height: 25,
-//     group: [
-//       [], [], [], [], []
-//     ]
-//   },
-// ]
-
 export default class ChoiceQuestionCLass implements BaseClass {
   public offsetY: number = 0;
   public question: IGeneralBigQuestionType;
