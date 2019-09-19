@@ -101,3 +101,31 @@ public splitSelf(currentPage: PageClass) {
   }
 }
 ```
+
+### 选择题
+```typescript
+public splitSelf(currentPage: PageClass) {
+  const { contentHeight, availableHeight } = currentPage;
+  let splitIdx = 0;
+  let totalHeight = 0;
+
+  for(let i = 0; i < this.groupRows.length; i++) {
+    totalHeight += this.groupRows[i].height;
+    if (totalHeight > availableHeight) {
+      splitIdx = i;
+      break;
+    }
+  }
+
+  const currentGroupRows = this.groupRows.slice(0, splitIdx);
+  const nextGroupRows = this.groupRows.slice(splitIdx);
+  this.groupRows = currentGroupRows;
+  this.offsetY = contentHeight - availableHeight;
+  currentPage.addComponents(this);
+  const nextQuestion = new ChoiceQuestionCLass(this.question, this.paperType, nextGroupRows);
+  return {
+    currentPage,
+    nextQuestion,
+  }
+}
+```
