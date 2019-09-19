@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
-  const { groupRows, question, offsetY, requiredHeight } = component;
+  const { groupRows, offsetY, requiredHeight } = component;
   let groupOffsetY = 0;
   
   return (

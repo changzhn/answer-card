@@ -21,8 +21,8 @@ export default class ChoiceQuestionCLass implements BaseClass {
   public paperType: PaperType;
   public groupRows: IGroupRow[] = [];
 
-  public constructor(question: IGeneralBigQuestionType, paperType: PaperType, groupRows?: IGroupRow[]) {
-    this.question = question;
+  public constructor(bigQuestion: IGeneralBigQuestionType, paperType: PaperType, groupRows?: IGroupRow[]) {
+    this.question = bigQuestion;
     this.partNo = 0;
     this.paperType = paperType;
 
@@ -36,7 +36,10 @@ export default class ChoiceQuestionCLass implements BaseClass {
   }
 
   public getRequiredHeight() {
-    return this.groupRows.reduce((prev, next) => prev + next.height, 0);
+    if (Array.isArray(this.groupRows)) {
+      return this.groupRows.reduce((prev, next) => prev + next.height, 0);
+    }
+    return 0;
   }
 
   public setGroupRows() {
@@ -120,6 +123,7 @@ export default class ChoiceQuestionCLass implements BaseClass {
     this.offsetY = contentHeight - availableHeight;
     currentPage.addComponents(this);
     const nextQuestion = new ChoiceQuestionCLass(this.question, this.paperType, nextGroupRows);
+    nextQuestion.partNo = this.partNo + 1;
     return {
       currentPage,
       nextQuestion,
