@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styles from './Attention.css';
+// import styles from './Attention.css';
 
-const { wrapper, left, right } = styles;
+const { wrapper, left, right } = {} as any;
 
 const Attention: React.SFC = () => (
   <div className={wrapper}>
