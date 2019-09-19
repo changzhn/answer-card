@@ -9,9 +9,10 @@ interface IProps {
   align: 'center' | 'left';
   fontSize?: string;
   border?: boolean;
+  bottom?: boolean;
 }
 
-const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = '3pt', border = false }) => {
+const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = '3pt', border = false, bottom = false }) => {
   const extraStyle: any = {
     dominantBaseline: 'middle',
   };
@@ -44,6 +45,7 @@ const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = 
       >
         {text}
       </text>
+      {bottom && <line x1="0" y1={height} x2={width} y2={height} strokeWidth="0.2" stroke="#000" />}
     </g>
   );
 };
