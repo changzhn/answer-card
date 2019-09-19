@@ -1,13 +1,13 @@
 import * as React from 'react';
 import QuestionType from '@/constants/QuestionType';
 import { Union } from '@/tools/question2page';
-import Title from '@/components/SvgShape/QuestionComponents/Title';
+import Title from '@/components/QuestionComponents/Title';
 import TitleClass from '@/tools/QuestionClasses/TitleClass';
-import AnswerQuestion from '@/components/SvgShape/QuestionComponents/AnswerQuestion';
+import AnswerQuestion from '@/components/QuestionComponents/AnswerQuestion';
 import AnswerQuestionClass from '@/tools/QuestionClasses/AnswerQuestionClass';
-import EssayQuestion from '@/components/SvgShape/QuestionComponents/EssayQuestion';
+import EssayQuestion from '@/components/QuestionComponents/EssayQuestion';
 import EssayQuestionClass from '@/tools/QuestionClasses/EssayQuestionClass';
-import ChoiceQuestion from '@/components/SvgShape/QuestionComponents/ChoiceQuestion';
+import ChoiceQuestion from '@/components/QuestionComponents/ChoiceQuestion';
 import ChoiceQuestionCLass from '@/tools/QuestionClasses/ChoiceQuestionClass';
 
 export default function getComponent(component: Union, colWidth: number) {

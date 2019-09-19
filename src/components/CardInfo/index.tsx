@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const CardInfo: React.SFC<IProps> = ({ page, colWidth, cardData }) => {
-  const { paperType, size, columnNum } = page;
+  const { size } = page;
 
   return (
     <g transform="translate(0, 0)">

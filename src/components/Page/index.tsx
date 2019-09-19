@@ -1,16 +1,16 @@
+import _ from 'lodash';
+import { ICardType } from '@/types/interface';
+import { ISizeItem } from '@/constants/Size';
 import * as React from 'react';
+import CardInfo from '../CardInfo';
+import ColumnNum from '@/constants/ColumnNum';
+import getComponent from './getComponent';
+import LocatingBlocks from '../LocatingBlocks';
+import PageClass from '@/tools/QuestionClasses/PageClass';
+import PageNum from '../PageNum';
+import PaperType from '@/constants/PaperType';
 import styles from './index.css';
 import Utils from '@/utils/Utils';
-import PageClass from '@/tools/QuestionClasses/PageClass';
-import { ICardType } from '@/types/interface';
-import _ from 'lodash';
-import PaperType from '@/constants/PaperType';
-import ColumnNum from '@/constants/ColumnNum';
-import { ISizeItem } from '@/constants/Size';
-import LocatingBlocks from '../LocatingBlocks';
-import PageNum from '../PageNum';
-import getComponent from './getComponent';
-import CardInfo from '../CardInfo';
 
 export interface IPageProp {
   paperType: PaperType;

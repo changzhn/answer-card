@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.css';
-import Page from '../components/Page';
-import SvgPage, { IPageProp } from '../components/SvgShape/Page';
+import SvgPage, { IPageProp } from '../components/Page';
 import { connect } from 'dva';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
