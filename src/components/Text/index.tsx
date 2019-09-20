@@ -45,7 +45,7 @@ const Text: React.SFC<IProps> = ({ x, y, width, height, text, align, fontSize = 
       >
         {text}
       </text>
-      {bottom && <line x1="0" y1={height} x2={width} y2={height} strokeWidth="0.2" stroke="#000" />}
+      {bottom && <line x1="0" y1={height - 1} x2={width} y2={height - 1} strokeWidth="0.2" stroke="#000" />}
     </g>
   );
 };
