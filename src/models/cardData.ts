@@ -70,7 +70,7 @@ const anwerQuestion: IGeneralQuestionType = {
   questionId: '123',
   questionNo: 1,
   questionType: 3,
-  height: 10,
+  height: 70,
   length: 800,
 };
 
@@ -124,8 +124,8 @@ const cardData: ICardType = {
   questions: [
     bigChoiceQuestion,
     bigFillBlankQuestion,
-    // bigAnswerQuestion,
-    // bigEssayQuestion,
+    bigAnswerQuestion,
+    bigEssayQuestion,
   ]
 };
 

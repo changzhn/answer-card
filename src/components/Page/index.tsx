@@ -68,7 +68,7 @@ export default class SvgPage extends React.Component<IProps> {
                 key={pageNo}
                 transform={`translate(${offsetX}, ${offsetY})`}
               >
-                <rect x="0" y="0" width={`${colWidth}`} height={`${size.contentHeight}`} fill="#eee" />
+                <rect x="0" y="0" width={`${colWidth}`} height={`${size.contentHeight}`} fill="transparent" />
                 {pageNo === 1 && <CardInfo cardData={cardData} page={page} colWidth={colWidth} />}
                 {
                   col.components.map(component => getComponent(component, colWidth))

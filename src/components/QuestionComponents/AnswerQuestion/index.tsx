@@ -18,10 +18,10 @@ export default class AnswerQuestion extends React.Component<IProps> {
         {
           partNo === 0 &&
           <Text 
-            x={2}
-            y={2}
-            width={2}
-            height={2}
+            x={1}
+            y={1}
+            width={10}
+            height={10}
             text={`${component.question.questionNo}、`}
             align="center"
           />
