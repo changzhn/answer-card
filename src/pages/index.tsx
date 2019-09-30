@@ -4,13 +4,15 @@ import SvgPage, { IPageProp } from '../components/Page';
 import { connect } from 'dva';
 import question2page from '@/tools/question2page';
 import PageClass from '@/tools/QuestionClasses/PageClass';
+import Settings from '@/components/Settings';
 import IModelState from '@/types/IModelState';
-import { ICardType } from '@/types/interface';
+import { ICardType, IAction } from '@/types/interface';
 import _ from 'lodash';
 
 
 interface IProps {
   cardData: ICardType;
+  dispatch: React.Dispatch<IAction>;
 }
 
 interface IState {
@@ -55,7 +57,7 @@ class AnswerCardMain extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { cardData } = this.props;
+    const { cardData, dispatch } = this.props;
     let pages = this.getPageProps();
     return (
       <div className={styles.appWrapper}>
@@ -71,6 +73,8 @@ class AnswerCardMain extends React.Component<IProps, IState> {
             ))
           }
         </div>
+
+        <Settings dispatch={dispatch} />
       </div>
     )
   }

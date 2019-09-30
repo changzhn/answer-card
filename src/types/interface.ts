@@ -31,3 +31,8 @@ export interface ICardType {
   columnNum: ColumnNum;
   questions: IGeneralBigQuestionType[];
 };
+
+export interface IAction {
+  type: string;
+  payload: any;
+};

@@ -122,10 +122,10 @@ const cardData: ICardType = {
   paperType: PaperType.A3,
   columnNum: ColumnNum.two,
   questions: [
-    bigChoiceQuestion,
-    bigFillBlankQuestion,
-    bigAnswerQuestion,
-    bigEssayQuestion,
+    // bigChoiceQuestion,
+    // bigFillBlankQuestion,
+    // bigAnswerQuestion,
+    // bigEssayQuestion,
   ]
 };
 
@@ -134,4 +134,13 @@ const initState: ICardType = cardData;
 export default {
   namespace: 'cardData',
   state: initState,
+  reducers: {
+    paperTypeChange(state: ICardType, action: any) {
+      // TODO: A4的尺寸还有问题，需要调试
+      return {
+        ...state,
+        paperType: action.payload.val,
+      }
+    }
+  }
 };
