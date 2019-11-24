@@ -3,6 +3,7 @@ import { Drawer, Button, Icon, Collapse } from 'antd';
 import styles from './index.css';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
+import AddQuestions from './components/AddQuestions';
 import { IAction } from '@/types/interface';
 
 const { settingBtn, settingBtnText } = styles;
@@ -29,7 +30,7 @@ export default class Settings extends React.Component<IProps, IState> {
     const { drawerVisible } = this.state;
     return (
       <div>
-        <Drawer 
+        <Drawer
           // tslint:disable-next-line: jsx-no-lambda
           onClose={() => this.setDrawerVisible(false)}
           visible={drawerVisible}
@@ -41,8 +42,8 @@ export default class Settings extends React.Component<IProps, IState> {
             {/* <Panel header="纸型设置" key="1">
               <PaperTypeSetting paperTypeChange={events.paperTypeChange.bind(this)} />
             </Panel> */}
-            <Panel header="This is panel header 2" key="2">
-              2
+            <Panel header="添加题型" key="2">
+              <AddQuestions addQuestion={events.addQuestion.bind(this)} />
             </Panel>
             <Panel header="This is panel header 3" key="3">
               3
@@ -50,8 +51,8 @@ export default class Settings extends React.Component<IProps, IState> {
           </Collapse>
         </Drawer>
 
-        <Button 
-          className={settingBtn} 
+        <Button
+          className={settingBtn}
           type="primary"
           // tslint:disable-next-line: jsx-no-lambda
           onClick={() => this.setDrawerVisible(true)}

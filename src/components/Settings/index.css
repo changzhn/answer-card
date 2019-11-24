@@ -1,5 +1,5 @@
 .settingBtn {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 200px;
   font-size: 22px;
@@ -11,7 +11,7 @@
 }
 
 @keyframes rotate1{
- 
+
   0%{-webkit-transform:rotate(0deg);}
 
   25%{-webkit-transform:rotate(90deg);}
