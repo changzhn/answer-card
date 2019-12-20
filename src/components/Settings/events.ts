@@ -12,6 +12,14 @@ export function paperTypeChange(this: Settings, e: any) {
 }
 
 export function addQuestion(this: Settings, type: QuestionType) {
-  console.log(type);
+  this.setState({
+    addQuestionModalVisible: true,
+    addQuestionType: type,
+  });
+}
 
+export function hideAQModal(this: Settings) {
+  this.setState({
+    addQuestionModalVisible: false,
+  });
 }

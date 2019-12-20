@@ -4,7 +4,9 @@ import styles from './index.css';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
 import AddQuestions from './components/AddQuestions';
+import AddQuestionModal from './components/AddQuestionModal';
 import { IAction } from '@/types/interface';
+import QuestionType from '@/constants/QuestionType';
 
 const { settingBtn, settingBtnText } = styles;
 const Panel = Collapse.Panel;
@@ -15,11 +17,15 @@ export interface IProps {
 
 export interface IState {
   drawerVisible: boolean;
+  addQuestionModalVisible: boolean;
+  addQuestionType: QuestionType;
 }
 
 export default class Settings extends React.Component<IProps, IState> {
   public state = {
     drawerVisible: true,
+    addQuestionModalVisible: false,
+    addQuestionType: QuestionType.Choices,
   }
 
   public setDrawerVisible = (bool: boolean) => {
@@ -27,11 +33,10 @@ export default class Settings extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { drawerVisible } = this.state;
+    const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
     return (
       <div>
         <Drawer
-          // tslint:disable-next-line: jsx-no-lambda
           onClose={() => this.setDrawerVisible(false)}
           visible={drawerVisible}
           mask={false}
@@ -39,9 +44,9 @@ export default class Settings extends React.Component<IProps, IState> {
         >
           <h3>答题卡设置</h3>
           <Collapse defaultActiveKey={['1', '2', '3']}>
-            {/* <Panel header="纸型设置" key="1">
+            <Panel header="纸型设置(暂不可用 )" key="1">
               <PaperTypeSetting paperTypeChange={events.paperTypeChange.bind(this)} />
-            </Panel> */}
+            </Panel>
             <Panel header="添加题型" key="2">
               <AddQuestions addQuestion={events.addQuestion.bind(this)} />
             </Panel>
@@ -59,6 +64,12 @@ export default class Settings extends React.Component<IProps, IState> {
         >
           <Icon className={settingBtnText} type="setting" />
         </Button>
+
+        <AddQuestionModal
+          visible={addQuestionModalVisible}
+          onCancel={events.hideAQModal.bind(this)}
+          questionType={addQuestionType}
+        />
       </div>
     );
   }
