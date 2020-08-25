@@ -12,7 +12,7 @@ export default {
   menu: {
     locale: true,
   },
-  title: 'Ant Design Pro',
+  title: '答题卡生成器',
   pwa: false,
   iconfontUrl: '',
 } as LayoutSettings & {
