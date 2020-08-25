@@ -3,8 +3,8 @@ import { Drawer, Button, Collapse } from 'antd';
 import styles from './index.css';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
-// import AddQuestions from './components/AddQuestions';
-// import AddQuestionModal from './components/AddQuestionModal';
+import AddQuestions from './components/AddQuestions';
+import AddQuestionModal from './components/AddQuestionModal';
 import QuestionType from '@/constants/QuestionType';
 
 const { settingBtn, settingBtnText } = styles;
@@ -47,7 +47,7 @@ export default class Settings extends React.Component<IProps, IState> {
               <PaperTypeSetting paperTypeChange={events.paperTypeChange.bind(this)} />
             </Panel>
             <Panel header="添加题型" key="2">
-              {/* <AddQuestions addQuestion={events.addQuestion.bind(this)} /> */}
+              <AddQuestions addQuestion={events.addQuestion.bind(this)} />
             </Panel>
             <Panel header="This is panel header 3" key="3">
               3
@@ -64,11 +64,11 @@ export default class Settings extends React.Component<IProps, IState> {
           {/* <Icon className={settingBtnText} type="setting" /> */}
         </Button>
 
-        {/* <AddQuestionModal
+        <AddQuestionModal
           visible={addQuestionModalVisible}
           onCancel={events.hideAQModal.bind(this)}
           questionType={addQuestionType}
-        /> */}
+        />
       </div>
     );
   }

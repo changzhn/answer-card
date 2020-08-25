@@ -1,23 +1,17 @@
 import * as React from 'react';
-import { Form, Input } from 'antd';
-import { FormComponentProps } from 'antd/lib/form/Form';
+import { Form, InputNumber } from 'antd';
+import { IQuestionForm } from './getQuestionForm';
 
 const FormItem = Form.Item;
 
-interface IChoicesFormProps extends FormComponentProps {
+interface IChoicesFormProps extends IQuestionForm {
 }
 
-const ChoicesForm: React.FunctionComponent<IChoicesFormProps> = (props) => {
-  const { form } = props;
-  const { getFieldDecorator } = form;
+const ChoicesForm: React.FC<IChoicesFormProps> = ({ form }) => {
   return (
-    <Form>
+    <Form form={form}>
       <FormItem>
-        {
-          getFieldDecorator('x')(
-            <Input />
-          )
-        }
+        <InputNumber />
       </FormItem>
     </Form>
   );

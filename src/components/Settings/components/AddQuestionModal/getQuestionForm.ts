@@ -1,7 +1,13 @@
+import * as React from 'react';
+import { FormInstance } from 'antd/lib/form';
 import QuestionType from '@/constants/QuestionType';
 import ChoicesForm from './ChoicesForm';
 
-export default function getQuestionForm(type: QuestionType) {
+export interface IQuestionForm {
+  form: FormInstance;
+}
+
+function getQuestionForm(type: QuestionType): React.FC<IQuestionForm> {
   switch(type) {
     case QuestionType.Choices:
       return ChoicesForm;
@@ -10,3 +16,5 @@ export default function getQuestionForm(type: QuestionType) {
       return ChoicesForm;
   }
 }
+
+export default getQuestionForm;

@@ -11,8 +11,8 @@ interface IProps {
 
 const AddQuestionModal: React.FC<IProps> = (props) => {
   const { visible, onCancel, questionType } = props;
+  const [form] = Form.useForm();
   const FormComp = getQuestionForm(questionType);
-  const FormCompWrapper = Form.create()(FormComp);
   return (
     <Modal
       visible={visible}
@@ -20,7 +20,7 @@ const AddQuestionModal: React.FC<IProps> = (props) => {
       footer={false}
       title={questionTitle[questionType]}
     >
-      <FormCompWrapper />
+      <FormComp form={form} />
     </Modal>
   );
 };
