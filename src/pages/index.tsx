@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { initialGlobalValue, reducers } from '@/store';
+import { initialGlobalValue, reducers, GlobalContext } from '@/store';
+import useReducerWithLogger from '@/store/useReducerWithLogger';
 import Editor from './editor';
 
-const { useReducer } = React;
 
 export default function() {
-  const [globalState, dispatch] = useReducer(reducers, initialGlobalValue);
+  const [cardData, dispatch] = useReducerWithLogger(reducers, initialGlobalValue);
   return (
-    <Editor cardData={globalState} dispatch={dispatch} />
+    <GlobalContext.Provider value={{ cardData, dispatch }}>
+      <Editor cardData={cardData} dispatch={dispatch} />
+    </GlobalContext.Provider>
   )
 }

@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { Drawer, Button, Collapse } from 'antd';
-import styles from './index.css';
+import QuestionType from '@/constants/QuestionType';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
-// import AddQuestions from './components/AddQuestions';
-// import AddQuestionModal from './components/AddQuestionModal';
-import QuestionType from '@/constants/QuestionType';
+import AddQuestions from './components/AddQuestions';
+import AddQuestionModal from './components/AddQuestionModal';
+import styles from './index.css';
 
 const { settingBtn, settingBtnText } = styles;
 const Panel = Collapse.Panel;
 
 export interface IProps {
   dispatch: React.Dispatch<GlobalValue.Action>;
+  cardData: GlobalValue.AnswerCardData;
 }
 
 export interface IState {
@@ -25,6 +26,10 @@ export default class Settings extends React.Component<IProps, IState> {
     drawerVisible: true,
     addQuestionModalVisible: false,
     addQuestionType: QuestionType.Choices,
+  };
+
+  public componentDidMount() {
+    events.eventEmitter.on('@hideAQModal', events.hideAQModal.bind(this));
   }
 
   public setDrawerVisible = (bool: boolean) => {
@@ -33,6 +38,7 @@ export default class Settings extends React.Component<IProps, IState> {
 
   public render() {
     const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
+
     return (
       <div>
         <Drawer
@@ -47,7 +53,7 @@ export default class Settings extends React.Component<IProps, IState> {
               <PaperTypeSetting paperTypeChange={events.paperTypeChange.bind(this)} />
             </Panel>
             <Panel header="添加题型" key="2">
-              {/* <AddQuestions addQuestion={events.addQuestion.bind(this)} /> */}
+              <AddQuestions addQuestion={events.addQuestion.bind(this)} />
             </Panel>
             <Panel header="This is panel header 3" key="3">
               3
@@ -64,11 +70,10 @@ export default class Settings extends React.Component<IProps, IState> {
           {/* <Icon className={settingBtnText} type="setting" /> */}
         </Button>
 
-        {/* <AddQuestionModal
+        <AddQuestionModal
           visible={addQuestionModalVisible}
-          onCancel={events.hideAQModal.bind(this)}
           questionType={addQuestionType}
-        /> */}
+        />
       </div>
     );
   }

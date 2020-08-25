@@ -1,10 +1,12 @@
+import { EventEmitter } from 'events';
 import Settings from './index';
 import QuestionType from '@/constants/QuestionType';
+import * as actionTypes from '@/store/actionTypes';
 
 export function paperTypeChange(this: Settings, e: any) {
   const { dispatch } = this.props;
   dispatch({
-    type: 'cardData/paperTypeChange',
+    type: actionTypes.CHANGE_PAPER_TYPE,
     payload: {
       val: e.target.value,
     },
@@ -23,3 +25,5 @@ export function hideAQModal(this: Settings) {
     addQuestionModalVisible: false,
   });
 }
+
+export const eventEmitter = new EventEmitter();

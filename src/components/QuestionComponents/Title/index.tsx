@@ -10,8 +10,9 @@ interface IProps {
 
 const Title: React.SFC<IProps> = ({ component, colWidth }) => {
   const { offsetY, requiredHeight, questionTitle, questionNo } = component;
+
   return (
-    <Text 
+    <Text
       x={0}
       y={offsetY}
       width={colWidth}
@@ -19,7 +20,7 @@ const Title: React.SFC<IProps> = ({ component, colWidth }) => {
       text={`${Utils.arabia2simplifiedChinese(`${questionNo}`)}、${questionTitle}`}
       align="left"
       fontSize="3pt"
-    />  
+    />
   );
 };
 

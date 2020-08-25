@@ -8,7 +8,7 @@ import styles from './index.css';
 
 
 interface IProps {
-  cardData: GlobalValue.ICardType;
+  cardData: GlobalValue.AnswerCardData;
   dispatch: React.Dispatch<GlobalValue.Action>;
 }
 
@@ -71,7 +71,10 @@ export default class AnswerCardMain extends React.Component<IProps, IState> {
           }
         </div>
 
-        <Settings dispatch={dispatch} />
+        <Settings
+          dispatch={dispatch}
+          cardData={cardData}
+        />
       </div>
     )
   }
