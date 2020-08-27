@@ -80,10 +80,14 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
     setQuestions(newQuestions);
   };
 
-  const deleteSubQuestion = (questionId: string) => {
-    const newQuestions = questions.filter(q => q.questionId !== questionId);
-    // TODO: 重排序号
-    setQuestions(newQuestions);
+  const deleteSubQuestion = (delQuestion: GlobalValue.IGeneralQuestionType) => {
+    const delIndex = questions.indexOf(delQuestion);
+    const prevQuestionNo = delQuestion.questionNo;
+    for(let i = delIndex + 1; i < questions.length; i++) {
+      questions[i].questionNo = prevQuestionNo - 1;
+    }
+    questions.splice(delIndex, 1);
+    setQuestions([...questions]);
   };
 
   return (
@@ -121,12 +125,13 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
         }, {
           title: '操作',
           width: '40%',
-          render(_, { questionId }) {
+          render(_, record) {
+            const { questionId } = record;
             return (
               <>
                 <Button onClick={() => increaseOptions(questionId)}>+</Button> &nbsp;
                 <Button onClick={() => decreaseOptions(questionId)}>-</Button> &nbsp;
-                <Button onClick={() => deleteSubQuestion(questionId)} danger>Del</Button>
+                <Button onClick={() => deleteSubQuestion(record)} danger>Del</Button>
               </>
             );
           }

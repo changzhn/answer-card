@@ -7,6 +7,8 @@ declare namespace GlobalValue {
     cardTitle: string;
     paperType: PaperType;
     columnNum: ColumnNum;
+    // 大题的总数量，根据这个参数可以获取最后的题号
+    bigQuestionNumber: number;
     // 题目的总数量，根据这个参数可以获取最后的题号
     questionNumber: number;
     questions: any[];
