@@ -12,6 +12,7 @@ const Panel = Collapse.Panel;
 
 export interface IProps {
   dispatch: React.Dispatch<GlobalValue.Action>;
+  cardData: GlobalValue.AnswerCardData;
 }
 
 export interface IState {
@@ -33,6 +34,8 @@ export default class Settings extends React.Component<IProps, IState> {
 
   public render() {
     const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
+    const { cardData } = this.props;
+
     return (
       <div>
         <Drawer
@@ -68,6 +71,7 @@ export default class Settings extends React.Component<IProps, IState> {
           visible={addQuestionModalVisible}
           onCancel={events.hideAQModal.bind(this)}
           questionType={addQuestionType}
+          cardData={cardData}
         />
       </div>
     );

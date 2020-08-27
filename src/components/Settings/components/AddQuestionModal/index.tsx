@@ -6,11 +6,12 @@ import getQuestionForm from './getQuestionForm';
 interface IProps {
   visible: boolean;
   onCancel: () => void;
+  cardData: GlobalValue.AnswerCardData;
   questionType: QuestionType;
 }
 
 const AddQuestionModal: React.FC<IProps> = (props) => {
-  const { visible, onCancel, questionType } = props;
+  const { visible, onCancel, questionType, cardData } = props;
   const [form] = Form.useForm();
   const FormComp = getQuestionForm(questionType);
   return (
@@ -18,9 +19,13 @@ const AddQuestionModal: React.FC<IProps> = (props) => {
       visible={visible}
       onCancel={onCancel}
       footer={false}
+      width={600}
       title={questionTitle[questionType]}
     >
-      <FormComp form={form} />
+      <FormComp
+        form={form}
+        questionNumber={cardData.questionNumber}
+      />
     </Modal>
   );
 };

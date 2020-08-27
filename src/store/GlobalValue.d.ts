@@ -5,8 +5,10 @@ declare namespace GlobalValue {
   export interface AnswerCardData {
     cardId: string;
     cardTitle: string;
-    paperType: PaperType,
-    columnNum: ColumnNum,
+    paperType: PaperType;
+    columnNum: ColumnNum;
+    // 题目的总数量，根据这个参数可以获取最后的题号
+    questionNumber: number;
     questions: any[];
   }
 
@@ -36,14 +38,6 @@ declare namespace GlobalValue {
     questionTitle: string;
     questionType: number;
     groupSize?: number; // 选择题一组的小题数
-  };
-
-  export interface ICardType {
-    cardId: string;
-    cardTitle: string;
-    paperType: PaperType;
-    columnNum: ColumnNum;
-    questions: IGeneralBigQuestionType[];
   };
 
   export interface IAction {

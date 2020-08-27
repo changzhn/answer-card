@@ -7,5 +7,6 @@ export const initialGlobalValue: GlobalValue.AnswerCardData = {
   cardTitle: 'ABCDEFG',
   paperType: PaperType.A3,
   columnNum: ColumnNum.two,
+  questionNumber: 0,
   questions: [],
 };
