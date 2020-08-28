@@ -1,15 +1,15 @@
-import PaperType from '@/constants/PaperType';
+// import PaperType from '@/constants/PaperType';
 import QuestionType from '@/constants/QuestionType';
-import Size from '@/constants/Size';
+// import Size from '@/constants/Size';
 import PageClass from './QuestionClasses/PageClass';
 import AnswerQuestionClass from './QuestionClasses/AnswerQuestionClass';
 import TitleClass from './QuestionClasses/TitleClass';
 import EssayQuestionClass from './QuestionClasses/EssayQuestionClass';
 import ChoiceQuestionCLass from './QuestionClasses/ChoiceQuestionClass';
 import FillBlankClass from './QuestionClasses/FillBlankClass';
-import { IGeneralBigQuestionType, IGeneralQuestionType, ICardType } from '@/types/interface';
 
-export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass | ChoiceQuestionCLass | FillBlankClass;
+export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass |
+  ChoiceQuestionCLass | FillBlankClass;
 
 /**
  * 将题型数据分配到页面中
@@ -45,10 +45,12 @@ function question2page(cardData: ICardType) {
     walk(new TitleClass(bigQuestion));
     switch(questionType) {
       case QuestionType.AnswerQuestion:
-        bigQuestion.questions.forEach((subQuestion: any) => walk(new AnswerQuestionClass(subQuestion)));
+        bigQuestion.questions.forEach((subQuestion: any) =>
+          walk(new AnswerQuestionClass(subQuestion)));
         break;
       case QuestionType.EssayQuestion:
-        bigQuestion.questions.forEach((subQuestion: any) => walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
+        bigQuestion.questions.forEach((subQuestion: any) =>
+          walk(new EssayQuestionClass(subQuestion, cardData.paperType)));
         break;
       case QuestionType.Choices: // 选择题需要统一去处理
         walk(new ChoiceQuestionCLass(bigQuestion, cardData.paperType));

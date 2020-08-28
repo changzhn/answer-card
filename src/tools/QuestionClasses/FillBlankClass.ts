@@ -1,20 +1,22 @@
 import PageClass from './PageClass';
 import BaseClass from './BaseClass';
-import { IGeneralBigQuestionType, IFillBlankQuestionType } from '@/types/interface';
 
 export default class FillBlankClass implements BaseClass {
   public offsetY: number = 0;
-  public groupRows: IFillBlankQuestionType[];
+  public groupRows: GlobalValue.IFillBlankQuestionType[];
   public requiredHeight: number;
   public partNo: number;
-  public question: IGeneralBigQuestionType;
+  public question: GlobalValue.IGeneralBigQuestionType;
 
-  public constructor(bigQuestion: IGeneralBigQuestionType, groupRows?: IFillBlankQuestionType[]) {
+  public constructor(
+    bigQuestion: GlobalValue.IGeneralBigQuestionType,
+    groupRows?: GlobalValue.IFillBlankQuestionType[],
+  ) {
     this.question = bigQuestion;
     if (groupRows) {
       this.groupRows = groupRows;
     } else {
-      this.groupRows = bigQuestion.questions  as IFillBlankQuestionType[];
+      this.groupRows = bigQuestion.questions  as GlobalValue.IFillBlankQuestionType[];
     }
     this.partNo = 0;
     this.requiredHeight = this.getRequiredHeight();

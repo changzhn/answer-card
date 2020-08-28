@@ -1,14 +1,16 @@
 import PageClass from './PageClass';
 import BaseClass from './BaseClass';
-import { IGeneralQuestionType } from '@/types/interface';
 
 export default class AnswerQuestionClass implements BaseClass {
   public offsetY: number = 0;
-  public question: IGeneralQuestionType;
+  public question: GlobalValue.IGeneralQuestionType;
   public requiredHeight: number;
   public partNo: number;
 
-  public constructor(question: IGeneralQuestionType, delta?: number) {
+  public constructor(
+    question: GlobalValue.IGeneralQuestionType,
+    delta?: number,
+  ) {
     this.question = question;
     this.partNo = 0;
     // 计算该解答题需要的空间

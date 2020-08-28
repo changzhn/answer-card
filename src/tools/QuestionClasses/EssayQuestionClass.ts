@@ -2,11 +2,10 @@ import PageClass from './PageClass';
 import BaseClass from './BaseClass';
 import PaperType from '@/constants/PaperType';
 import Size from '@/constants/Size';
-import { IGeneralQuestionType } from '@/types/interface';
 
 export default class EssayQuestionClass implements BaseClass {
   public offsetY: number = 0;
-  public question: IGeneralQuestionType;
+  public question: GlobalValue.IGeneralQuestionType;
   public requiredHeight: number;
   public partNo: number;
   public paperType: PaperType;
@@ -15,7 +14,11 @@ export default class EssayQuestionClass implements BaseClass {
   public restLength: number;
   public prevRows: number;
 
-  public constructor(question: IGeneralQuestionType, paperType: PaperType, restLength?: number) {
+  public constructor(
+    question: GlobalValue.IGeneralQuestionType,
+    paperType: PaperType,
+    restLength?: number,
+  ) {
     this.question = question;
     this.paperType = paperType;
     this.partNo = 0;

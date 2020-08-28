@@ -1,27 +1,30 @@
-import PageClass from './PageClass';
-import BaseClass from './BaseClass';
+import _ from 'lodash';
 import PaperType from '@/constants/PaperType';
 import Size from '@/constants/Size';
-import _ from 'lodash';
-import { IGeneralBigQuestionType, IGeneralQuestionType } from '@/types/interface';
+import PageClass from './PageClass';
+import BaseClass from './BaseClass';
 
 export interface IGroupRow {
   height: number;
   groupCol: {
     col: number,
-    group: IGeneralQuestionType[]
+    group: GlobalValue.IGeneralQuestionType[]
   }[];
 };
 
 export default class ChoiceQuestionCLass implements BaseClass {
   public offsetY: number = 0;
-  public question: IGeneralBigQuestionType;
+  public question: GlobalValue.IGeneralBigQuestionType;
   public requiredHeight: number;
   public partNo: number;
   public paperType: PaperType;
   public groupRows: IGroupRow[] = [];
 
-  public constructor(bigQuestion: IGeneralBigQuestionType, paperType: PaperType, groupRows?: IGroupRow[]) {
+  public constructor(
+    bigQuestion: GlobalValue.IGeneralBigQuestionType,
+    paperType: PaperType,
+    groupRows?: IGroupRow[],
+  ) {
     this.question = bigQuestion;
     this.partNo = 0;
     this.paperType = paperType;
@@ -52,13 +55,13 @@ export default class ChoiceQuestionCLass implements BaseClass {
     // 组高
     const groupHeight = (groupSize as number) * 5 + 2;
     // 分组
-    const groups = _.chunk(this.question.questions as IGeneralQuestionType[], groupSize);
+    const groups = _.chunk(this.question.questions as GlobalValue.IGeneralQuestionType[], groupSize);
 
     let row: IGroupRow = {
       height: groupHeight,
       groupCol: [],
     };
-    
+
     groups.forEach(group => {
       let groupCols = this.getGroupCol(group); // 1或2
       cols += groupCols;
