@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Drawer, Button, Icon, Collapse } from 'antd';
-import styles from './index.css';
+import { Drawer, Button, Collapse } from 'antd';
+import QuestionType from '@/constants/QuestionType';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
 import AddQuestions from './components/AddQuestions';
 import AddQuestionModal from './components/AddQuestionModal';
-import { IAction } from '@/types/interface';
-import QuestionType from '@/constants/QuestionType';
+import styles from './index.css';
 
 const { settingBtn, settingBtnText } = styles;
 const Panel = Collapse.Panel;
 
 export interface IProps {
-  dispatch: React.Dispatch<IAction>;
+  dispatch: React.Dispatch<GlobalValue.Action>;
+  cardData: GlobalValue.AnswerCardData;
 }
 
 export interface IState {
@@ -26,6 +26,10 @@ export default class Settings extends React.Component<IProps, IState> {
     drawerVisible: true,
     addQuestionModalVisible: false,
     addQuestionType: QuestionType.Choices,
+  };
+
+  public componentDidMount() {
+    events.eventEmitter.on('@hideAQModal', events.hideAQModal.bind(this));
   }
 
   public setDrawerVisible = (bool: boolean) => {
@@ -34,6 +38,7 @@ export default class Settings extends React.Component<IProps, IState> {
 
   public render() {
     const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
+
     return (
       <div>
         <Drawer
@@ -62,12 +67,11 @@ export default class Settings extends React.Component<IProps, IState> {
           // tslint:disable-next-line: jsx-no-lambda
           onClick={() => this.setDrawerVisible(true)}
         >
-          <Icon className={settingBtnText} type="setting" />
+          {/* <Icon className={settingBtnText} type="setting" /> */}
         </Button>
 
         <AddQuestionModal
           visible={addQuestionModalVisible}
-          onCancel={events.hideAQModal.bind(this)}
           questionType={addQuestionType}
         />
       </div>

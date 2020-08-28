@@ -2,25 +2,32 @@ import * as React from 'react';
 import { Modal, Form } from 'antd';
 import QuestionType, { questionTitle } from '@/constants/QuestionType';
 import getQuestionForm from './getQuestionForm';
+import { eventEmitter } from '../../events';
 
 interface IProps {
   visible: boolean;
-  onCancel: () => void;
   questionType: QuestionType;
 }
 
-const AddQuestionModal: React.FC<IProps> = (props) => {
-  const { visible, onCancel, questionType } = props;
+const AddQuestionModal: React.FC<IProps> = ({
+  visible,
+  questionType,
+}) => {
+  const [form] = Form.useForm();
   const FormComp = getQuestionForm(questionType);
-  const FormCompWrapper = Form.create()(FormComp);
+
   return (
     <Modal
       visible={visible}
-      onCancel={onCancel}
       footer={false}
+      onCancel={() => eventEmitter.emit('@hideAQModal')}
+      width={600}
       title={questionTitle[questionType]}
+      destroyOnClose
     >
-      <FormCompWrapper />
+      <FormComp
+        form={form}
+      />
     </Modal>
   );
 };

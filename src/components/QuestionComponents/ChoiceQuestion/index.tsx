@@ -15,7 +15,7 @@ interface IProps {
 const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
   const { groupRows, offsetY, requiredHeight } = component;
   let groupOffsetY = 0;
-  
+
   return (
     <g transform={`translate(0, ${offsetY})`}>
       <rect x="0" y="0" width={colWidth} height={requiredHeight} fill="transparent" stroke="#000" strokeWidth="0.2" />
@@ -27,7 +27,7 @@ const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
             groupOffsetY += groupRows[groupRowIdx - 1].height;
           }
           return (
-            <g key={groupRowIdx} transform={`translate(0, ${groupOffsetY + 2})`}> {/* TODO: 向下移动了2 */}
+            <g key={groupRowIdx} transform={`translate(0, ${groupOffsetY})`}>
               <rect x="0" y="0" width={colWidth} height={height} fill="transparent" />
 
               {
@@ -44,9 +44,10 @@ const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
 
                           return (
                             <g key={questionId} transform={`translate(0, ${qIdx * groupColHeight})`}>
-                              <Text 
+                              <rect x="0" y="0" width={31} height={2} fill="transparent" transform="translate(0, 1.5)" />
+                              <Text
                                 x={0}
-                                y={0}
+                                y={1.5}
                                 width={6}
                                 height={2}
                                 fontSize="1.5pt"
@@ -56,10 +57,10 @@ const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
 
                               {
                                 Array(length).fill(0).map((_, oIdx) => (
-                                  <Text 
+                                  <Text
                                     key={oIdx}
                                     x={6 + optionWidth * oIdx}
-                                    y={0}
+                                    y={1.5}
                                     width={3.5}
                                     height={2}
                                     fontSize="1.2pt"
@@ -71,13 +72,16 @@ const ChoiceQuestion: React.SFC<IProps> = ({ component, colWidth }) => {
                               }
                             </g>
                           )
-                        }) : null}
+                        }) : null
+                      }
                     </g>
                   )
-                }) : null}
+                }) : null
+              }
             </g>
           )
-        }) : null}
+        }) : null
+      }
     </g>
   );
 };
