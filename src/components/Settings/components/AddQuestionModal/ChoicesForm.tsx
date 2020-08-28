@@ -40,6 +40,10 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({
   const { cardData, dispatch } = useContext(GlobalContext);
   const [questions, setQuestions] = useState<Array<GlobalValue.IGeneralQuestionType>>([]);
 
+  useEffect(() => {
+    form.setFieldsValue({ number: 10 });
+  }, []);
+
   const changeNumber = () => {
     let number = form.getFieldValue('number');
     if (number > MAX_SIZE) {
