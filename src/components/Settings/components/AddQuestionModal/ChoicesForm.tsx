@@ -8,7 +8,7 @@ import { IQuestionForm } from './getQuestionForm';
 import Footer from './Footer';
 import { eventEmitter } from '../../events';
 
-const { useState, useContext } = React;
+const { useState, useContext, useEffect } = React;
 const FormItem = Form.Item;
 const MAX_SIZE = 200;
 
@@ -27,7 +27,7 @@ const subQuestion: GlobalValue.IGeneralQuestionType = {
   questionId: '',
   questionNo: 1,
   questionType: 3,
-  height: 10,
+  height: 5,
   length: 4,
 };
 

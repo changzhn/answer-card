@@ -23,6 +23,7 @@ const AddQuestionModal: React.FC<IProps> = ({
       onCancel={() => eventEmitter.emit('@hideAQModal')}
       width={600}
       title={questionTitle[questionType]}
+      destroyOnClose
     >
       <FormComp
         form={form}
