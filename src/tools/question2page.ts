@@ -15,7 +15,7 @@ export type Union = TitleClass | AnswerQuestionClass | EssayQuestionClass |
  * 将题型数据分配到页面中
  * @param cardData 题卡数据
  */
-function question2page(cardData: ICardType) {
+function question2page(cardData: GlobalValue.ICardType) {
   const pages: PageClass[] = [];
   const { paperType } = cardData;
   let page = new PageClass(paperType, 1);
