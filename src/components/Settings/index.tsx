@@ -5,6 +5,7 @@ import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
 import AddQuestions from './components/AddQuestions';
 import AddQuestionModal from './components/AddQuestionModal';
+import QuestionList from './components/QuestionList';
 import styles from './index.css';
 
 const { settingBtn, settingBtnText } = styles;
@@ -48,15 +49,15 @@ export default class Settings extends React.Component<IProps, IState> {
           width="600px"
         >
           <h3>答题卡设置</h3>
-          <Collapse defaultActiveKey={['1', '2', '3']}>
+          <Collapse defaultActiveKey={['1', '2']}>
             <Panel header="纸型设置(暂不可用 )" key="1">
               <PaperTypeSetting paperTypeChange={events.paperTypeChange.bind(this)} />
             </Panel>
             <Panel header="添加题型" key="2">
               <AddQuestions addQuestion={events.addQuestion.bind(this)} />
             </Panel>
-            <Panel header="This is panel header 3" key="3">
-              3
+            <Panel header="题目列表" key="3">
+              <QuestionList />
             </Panel>
           </Collapse>
         </Drawer>
