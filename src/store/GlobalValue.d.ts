@@ -19,6 +19,7 @@ declare namespace GlobalValue {
     payload: any;
   }
 
+  // 小题
   export interface IGeneralQuestionType {
     height: number;
     length: number;
@@ -33,12 +34,15 @@ declare namespace GlobalValue {
     group: IGeneralQuestionType[]
   };
 
+  // 大题
   export interface IGeneralBigQuestionType {
     questionId: string;
     questionNo: number;
     questions: IGeneralQuestionType[] | IFillBlankQuestionType[];
     questionTitle: string;
     questionType: number;
+    // 其下小题的数量
+    questionNumber: number;
     groupSize?: number; // 选择题一组的小题数
   };
 

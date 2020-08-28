@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events';
 import Settings from './index';
 import QuestionType from '@/constants/QuestionType';
 import * as actionTypes from '@/store/actionTypes';
@@ -24,3 +25,5 @@ export function hideAQModal(this: Settings) {
     addQuestionModalVisible: false,
   });
 }
+
+export const eventEmitter = new EventEmitter();

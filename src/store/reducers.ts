@@ -9,7 +9,18 @@ export const reducers = (
       return {
         ...state,
         paperType: action.payload.val,
-      }
+      };
+    case actionTypes.ADD_BIG_QUESTION:
+      return {
+        ...state,
+        bigQuestionNumber: state.bigQuestionNumber + 1,
+        questionNumber: state.questionNumber + action.payload.questionNumber,
+        questions: [
+          ...state.questions,
+          action.payload,
+        ],
+      };
+    default:
+      return state;
   }
-  return state;
 };

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Drawer, Button, Collapse } from 'antd';
-import styles from './index.css';
+import QuestionType from '@/constants/QuestionType';
 import * as events from './events';
 import PaperTypeSetting from './components/PaperType';
 import AddQuestions from './components/AddQuestions';
 import AddQuestionModal from './components/AddQuestionModal';
-import QuestionType from '@/constants/QuestionType';
+import styles from './index.css';
 
 const { settingBtn, settingBtnText } = styles;
 const Panel = Collapse.Panel;
@@ -26,6 +26,10 @@ export default class Settings extends React.Component<IProps, IState> {
     drawerVisible: true,
     addQuestionModalVisible: false,
     addQuestionType: QuestionType.Choices,
+  };
+
+  public componentDidMount() {
+    events.eventEmitter.on('@hideAQModal', events.hideAQModal.bind(this));
   }
 
   public setDrawerVisible = (bool: boolean) => {
@@ -34,7 +38,6 @@ export default class Settings extends React.Component<IProps, IState> {
 
   public render() {
     const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
-    const { cardData } = this.props;
 
     return (
       <div>
@@ -69,9 +72,7 @@ export default class Settings extends React.Component<IProps, IState> {
 
         <AddQuestionModal
           visible={addQuestionModalVisible}
-          onCancel={events.hideAQModal.bind(this)}
           questionType={addQuestionType}
-          cardData={cardData}
         />
       </div>
     );

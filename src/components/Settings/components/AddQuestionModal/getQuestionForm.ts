@@ -5,7 +5,6 @@ import ChoicesForm from './ChoicesForm';
 
 export interface IQuestionForm {
   form: FormInstance;
-  questionNumber: number;
 }
 
 function getQuestionForm(type: QuestionType): React.FC<IQuestionForm> {

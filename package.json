@@ -50,6 +50,7 @@
     "@types/uuid": "^8.3.0",
     "antd": "^4.4.0",
     "classnames": "^2.2.6",
+    "events": "^3.2.0",
     "lodash": "^4.17.11",
     "moment": "^2.25.3",
     "omit.js": "^2.0.2",

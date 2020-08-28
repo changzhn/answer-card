@@ -2,9 +2,13 @@ import * as React from 'react';
 import { Form, InputNumber, Button, Table } from 'antd';
 import { v4 as uuid } from 'uuid';
 import letters from '@/constants/letters';
+import { GlobalContext } from '@/store';
+import { ADD_BIG_QUESTION } from '@/store/actionTypes';
 import { IQuestionForm } from './getQuestionForm';
+import Footer from './Footer';
+import { eventEmitter } from '../../events';
 
-const { useState } = React;
+const { useState, useContext } = React;
 const FormItem = Form.Item;
 const MAX_SIZE = 200;
 
@@ -13,6 +17,7 @@ const bigQuestion: GlobalValue.IGeneralBigQuestionType = {
   questionNo: 1,
   questionTitle: '选择题',
   questionType: 1,
+  questionNumber: 0,
   // 以几个小题为1组
   groupSize: 5,
   questions: [],
@@ -29,7 +34,10 @@ const subQuestion: GlobalValue.IGeneralQuestionType = {
 interface IChoicesFormProps extends IQuestionForm {
 }
 
-const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
+const ChoicesForm: React.FC<IChoicesFormProps> = ({
+  form,
+}) => {
+  const { cardData, dispatch } = useContext(GlobalContext);
   const [questions, setQuestions] = useState<Array<GlobalValue.IGeneralQuestionType>>([]);
 
   const changeNumber = () => {
@@ -48,7 +56,7 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
         ({
           ...subQuestion,
           questionId: uuid(),
-          questionNo: questionNumber + currentNumber + idx + 1,
+          questionNo: cardData.questionNumber + currentNumber + idx + 1,
         })));
     } else if (number < currentNumber) {
       newQuestions = questions.slice(0, number);
@@ -82,12 +90,26 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
 
   const deleteSubQuestion = (delQuestion: GlobalValue.IGeneralQuestionType) => {
     const delIndex = questions.indexOf(delQuestion);
-    const prevQuestionNo = delQuestion.questionNo;
     for(let i = delIndex + 1; i < questions.length; i++) {
-      questions[i].questionNo = prevQuestionNo - 1;
+      questions[i].questionNo -= 1;
     }
     questions.splice(delIndex, 1);
     setQuestions([...questions]);
+  };
+
+  const handleConfirm = () => {
+    const bq = {
+      ...bigQuestion,
+      questionId: uuid(),
+      questionNo: cardData.bigQuestionNumber + 1,
+      questionNumber: questions.length,
+      questions,
+    };
+    dispatch({
+      type: ADD_BIG_QUESTION,
+      payload: bq,
+    });
+    eventEmitter.emit('@hideAQModal');
   };
 
   return (
@@ -147,6 +169,8 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({ form, questionNumber }) => {
           pageSize: 30,
         }}
       />
+      <br />
+      <Footer onOk={handleConfirm} />
     </>
   );
 };
