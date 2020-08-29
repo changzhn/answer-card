@@ -3,13 +3,26 @@ export default class Utils {
     return `${num}mm`;
   }
 
+  static reorderNo(bigQuestions: GlobalValue.IGeneralBigQuestionType[]) {
+    let questionNo = 1;
+    return bigQuestions.map((bigQuestion, bIdx) => {
+      bigQuestion.questionNo = bIdx + 1;
+      // @ts-ignore FIXME: 类型
+      bigQuestion.questions = bigQuestion.questions.map(subQuestion => {
+        subQuestion.questionNo = questionNo++;
+        return subQuestion;
+      });
+      return bigQuestion;
+    });
+  }
+
   static arabia2simplifiedChinese(num: string) {
     let i;
     for (i = num.length - 1; i >= 0; i--) {
       num = num.replace(",", "") //替换num中的“,”
       num = num.replace(" ", "") //替换num中的空格
     }
-    
+
     //字符处理完毕后开始转换，采用前后两部分分别转换
     let part = String(num).split(".");
     let newchar = "";

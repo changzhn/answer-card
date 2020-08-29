@@ -56,6 +56,7 @@ export default class AnswerCardMain extends React.Component<IProps, IState> {
   public render() {
     const { cardData, dispatch } = this.props;
     let pages = this.getPageProps();
+
     return (
       <div className={styles.appWrapper}>
         <div className={styles.pagesWrapper}>

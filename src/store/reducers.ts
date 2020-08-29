@@ -1,3 +1,4 @@
+import Utils from '@/utils/Utils';
 import * as actionTypes from './actionTypes';
 
 export const reducers = (
@@ -19,6 +20,17 @@ export const reducers = (
           ...state.questions,
           action.payload,
         ],
+      };
+    case actionTypes.DELETE_BIG_QUESTION:
+      // bigQuestionNumber - 1
+      // questionNumber 减相应值
+      // 该题后面重排序号
+      const delBigQuestion = action.payload;
+      state.bigQuestionNumber -= 1;
+      state.questionNumber -= delBigQuestion.questionNumber;
+      state.questions = Utils.reorderNo(state.questions.filter(item => item !== delBigQuestion));
+      return {
+        ...state,
       };
     default:
       return state;
