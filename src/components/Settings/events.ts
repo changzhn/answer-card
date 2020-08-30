@@ -13,10 +13,11 @@ export function paperTypeChange(this: Settings, e: any) {
   })
 }
 
-export function addQuestion(this: Settings, type: QuestionType) {
+export function addQuestion(this: Settings, type: QuestionType, bigQuestion?: any) {
   this.setState({
     addQuestionModalVisible: true,
     addQuestionType: type,
+    editBigQuestion: bigQuestion,
   });
 }
 

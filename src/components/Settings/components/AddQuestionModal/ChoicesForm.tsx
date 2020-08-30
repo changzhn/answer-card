@@ -12,7 +12,7 @@ const { useState, useContext, useEffect } = React;
 const FormItem = Form.Item;
 const MAX_SIZE = 200;
 
-const bigQuestion: GlobalValue.IGeneralBigQuestionType = {
+let bigQuestion: GlobalValue.IGeneralBigQuestionType = {
   questionId: '',
   questionNo: 1,
   questionTitle: '选择题',
@@ -36,6 +36,7 @@ interface IChoicesFormProps extends IQuestionForm {
 
 const ChoicesForm: React.FC<IChoicesFormProps> = ({
   form,
+  editBigQuestion,
 }) => {
   const { cardData, dispatch } = useContext(GlobalContext);
   const [questions, setQuestions] = useState<Array<GlobalValue.IGeneralQuestionType>>([]);
@@ -43,6 +44,13 @@ const ChoicesForm: React.FC<IChoicesFormProps> = ({
   useEffect(() => {
     form.setFieldsValue({ number: 10 });
   }, []);
+
+  useEffect(() => {
+    if (editBigQuestion) {
+      bigQuestion = editBigQuestion;
+      setQuestions(editBigQuestion.questions);
+    }
+  }, [editBigQuestion]);
 
   const changeNumber = () => {
     let number = form.getFieldValue('number');

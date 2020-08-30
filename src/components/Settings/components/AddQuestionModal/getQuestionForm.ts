@@ -5,6 +5,7 @@ import ChoicesForm from './ChoicesForm';
 
 export interface IQuestionForm {
   form: FormInstance;
+  editBigQuestion: any;
 }
 
 function getQuestionForm(type: QuestionType): React.FC<IQuestionForm> {

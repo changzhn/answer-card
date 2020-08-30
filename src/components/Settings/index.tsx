@@ -20,6 +20,7 @@ export interface IState {
   drawerVisible: boolean;
   addQuestionModalVisible: boolean;
   addQuestionType: QuestionType;
+  editBigQuestion?: any;
 }
 
 export default class Settings extends React.Component<IProps, IState> {
@@ -27,18 +28,26 @@ export default class Settings extends React.Component<IProps, IState> {
     drawerVisible: true,
     addQuestionModalVisible: false,
     addQuestionType: QuestionType.Choices,
+    editBigQuestion: null,
   };
 
   public componentDidMount() {
     events.eventEmitter.on('@hideAQModal', events.hideAQModal.bind(this));
+    events.eventEmitter.on('@openAQModal', (bigQuestion: any) =>
+      events.addQuestion.call(this, bigQuestion.questionType, bigQuestion));
   }
 
   public setDrawerVisible = (bool: boolean) => {
-    this.setState({ drawerVisible: bool })
+    this.setState({ drawerVisible: bool });
   }
 
   public render() {
-    const { drawerVisible, addQuestionModalVisible, addQuestionType } = this.state;
+    const {
+      drawerVisible,
+      addQuestionModalVisible,
+      addQuestionType,
+      editBigQuestion,
+    } = this.state;
 
     return (
       <div>
@@ -74,6 +83,7 @@ export default class Settings extends React.Component<IProps, IState> {
         <AddQuestionModal
           visible={addQuestionModalVisible}
           questionType={addQuestionType}
+          editBigQuestion={editBigQuestion}
         />
       </div>
     );

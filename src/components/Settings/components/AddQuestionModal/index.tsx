@@ -7,11 +7,13 @@ import { eventEmitter } from '../../events';
 interface IProps {
   visible: boolean;
   questionType: QuestionType;
+  editBigQuestion?: any;
 }
 
 const AddQuestionModal: React.FC<IProps> = ({
   visible,
   questionType,
+  editBigQuestion,
 }) => {
   const [form] = Form.useForm();
   const FormComp = getQuestionForm(questionType);
@@ -27,6 +29,7 @@ const AddQuestionModal: React.FC<IProps> = ({
     >
       <FormComp
         form={form}
+        editBigQuestion={editBigQuestion}
       />
     </Modal>
   );
